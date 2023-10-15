@@ -1,1 +1,2 @@
-# truth-tracker
+Truth Tracker
+
