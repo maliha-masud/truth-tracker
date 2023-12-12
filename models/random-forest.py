@@ -12,12 +12,6 @@ data = pd.read_excel(file_path)
 # Ensure the 'Textual Rating' column exists
 if 'Textual Rating' in data.columns:
     # Preprocessing - 
-    # Handle NaN values in 'Text' column
-    data['Text'].fillna('', inplace=True)
-
-    # Handle inconsistent data types in 'Textual Rating' column
-    data['Textual Rating'] = data['Textual Rating'].astype(str)
-
     # Encode labels uniformly
     label_encoder = LabelEncoder()
     data['Textual Rating'] = label_encoder.fit_transform(data['Textual Rating'])
