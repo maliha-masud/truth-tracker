@@ -4,7 +4,7 @@ import pandas as pd
 existing_file_path = "pakistani_dataset_consolidated_augmented.xlsx"
 df = pd.read_excel(existing_file_path)
 
-#remove rows with duplicate URL rows
+#remove rows with duplicate URL values
 df = df.drop_duplicates(subset=['URL'])
 
 #remove rows with no 'Text'
