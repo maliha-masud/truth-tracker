@@ -54,4 +54,4 @@ Here are some related projects:
 - [Pakistani Media Fake News Classification using Machine Learning Classifiers](https://ieeexplore.ieee.org/document/8966734)
 - [Fake news detection in Urdu language using machine learning](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10280395/)
 - [Improving Fake News Detection of Influential Domain via Domain- and Instance-Level Transfer](https://aclanthology.org/2022.coling-1.250/)
-- [Litrl Browser](https://github.com/litrl/litrl_code)
+- [Litrl Browser](https://www.researchgate.net/publication/331635802_A_News_Verification_Browser_for_the_Detection_of_Clickbait_Satire_and_Falsified_News)
