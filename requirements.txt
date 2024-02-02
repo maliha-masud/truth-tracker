@@ -7,5 +7,5 @@ scikit-learn==1.0.1
 tensorflow==2.11.1
 matplotlib==3.4.3
 
-Django==4.1.10
+Django==4.1.13
 django-bootstrap4==3.0.0
