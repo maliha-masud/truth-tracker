@@ -49,5 +49,17 @@ if 'Textual Rating' in data.columns:
     # print additional evaluation metrics in form of classification report
     print('Classification Report:\n', classification_report(y_test, y_pred, zero_division=1))
 
+    # test on new input
+    while True:
+        text = input("Enter text for classification (type 'exit' to end): ")
+        if text.lower() == 'exit':
+            break
+        # preprocess the new input
+        text_tfidf = tfidf.transform([text])
+        # predict the label
+        prediction = model.predict(text_tfidf)
+        # display the predicted label
+        print(f"\nNew Text: {text}\nPredicted Label: {label_encoder.inverse_transform(prediction)[0]}\n")
+
 else:
     print("Column 'Textual Rating' not found in the dataset.")
