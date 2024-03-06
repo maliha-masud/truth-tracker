@@ -1,45 +1,46 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import classification_report
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
-# Load the dataset from Excel file
+# Dataset
 file_path = 'D:/pakistani_dataset_consolidated_augmented.xlsx'
 data = pd.read_excel(file_path)
 
-# Display the first few rows to understand the data and check columns
+# first few rows to understand the data \
 print(data.head())
 print(data.columns)
 
-# Ensure the 'Textual Rating' column exists in your data
+# Check if the 'Textual Rating' column exists
 if 'Textual Rating' in data.columns:
-    # Preprocessing - handle NaN values in 'Text' column and convert text to numerical form using TF-IDF
-    data['Text'].fillna('', inplace=True)  # Replace NaN values with empty strings
+    # Preprocessing - handle NaN values in 'Text' column and text to numerical form conversion
+    data['Text'].fillna('', inplace=True)
 
     tfidf = TfidfVectorizer(stop_words='english')
-    X = tfidf.fit_transform(data['Text'])  # Assuming 'Text' is the column containing the textual data
+    X = tfidf.fit_transform(data['Text'])
     y = data['Textual Rating']  # Assuming 'Textual Rating' is the target variable
 
-    # Convert non-boolean values in the target column to strings
+    # Non-boolean values in the target column to strings conversion
     y = y.astype(str)
 
-    # Split the data into training and testing sets
+    # Training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    # Initialize and train the model
+    # Model training
     model = LogisticRegression(max_iter=1000)
     model.fit(X_train, y_train)
 
-    # Predict on the test set
+    # Prediction on the test set
     y_pred = model.predict(X_test)
 
-    # Evaluate the model
+    # Model Evaluation
     accuracy = accuracy_score(y_test, y_pred)
     print(f"Accuracy: {accuracy:.2f}")
 
-    # Additional evaluation metrics and report
+    # Evaluation metrics and report
     print(classification_report(y_test, y_pred, zero_division=0))
 
     # Training and Testing Accuracy Graphs
@@ -52,6 +53,19 @@ if 'Textual Rating' in data.columns:
     plt.title('Model Training and Testing Accuracy')
     plt.ylabel('Accuracy')
     plt.show()
+
+    # User Input for classification
+    while True:
+        user_input = input("Enter text for classification (type 'exit' to end): ")
+        if user_input.lower() == 'exit':
+            break
+
+        # Preprocess user input
+        user_input_tfidf = tfidf.transform([user_input])
+
+        # Predictions using the trained model
+        prediction = model.predict(user_input_tfidf)
+        print(f"Predicted Rating: {prediction[0]}")
 
 else:
     print("Column 'Textual Rating' not found in the dataset.")
