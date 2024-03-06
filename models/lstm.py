@@ -1,8 +1,8 @@
-#import necessary libraries
+# Import necessary libraries
 import pandas as pd
+from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import accuracy_score, classification_report
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Sequential
@@ -10,64 +10,74 @@ from tensorflow.keras.layers import Embedding, Bidirectional, LSTM, Dense, Dropo
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import LearningRateScheduler
 
-# load excel dataset
-file_path = '/content/pakistani_dataset_consolidated_augmented.xlsx'
-# store as dataframe
+# Dataset
+file_path = 'D:/pakistani_dataset_consolidated_augmented.xlsx'
 data = pd.read_excel(file_path)
 
-# check for textual rating column 
+# Check if 'Textual Rating' and 'Text' columns exists
 if 'Textual Rating' in data.columns and 'Text' in data.columns:
-    # convert categorical labels into numerical form by using label encoding
+    # Categorical labels into numerical form conversion
     label_encoder = LabelEncoder()
-    # textual rating column is replaced with encoded numerical values using fit_transform
     data['Textual Rating'] = label_encoder.fit_transform(data['Textual Rating'])
 
-    # perform text tokenization and sequence padding
+    # Text tokenization and sequence padding
     tokenizer = Tokenizer(num_words=5000, oov_token='<OOV>')
-    # fit tokenizer on text data
     tokenizer.fit_on_texts(data['Text'])
-    #convert text data into sequences of integers
     sequences = tokenizer.texts_to_sequences(data['Text'])
-    #pad sequences to ensure uniform length
     padded_sequences = pad_sequences(sequences, maxlen=100, padding='post', truncating='post')
 
-    # split data into 80% training and 20% testing set
+    # Training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(
         padded_sequences, data['Textual Rating'], test_size=0.2, random_state=42
     )
 
-    # create sequential lstm model
+    # A sequential LSTM model
     model = Sequential()
-    # convert integer-encoded vocabulary into dense vectors
     model.add(Embedding(input_dim=5000, output_dim=16, input_length=100))
-    # lstm layer can process input sequences in both forward and backward directions
     model.add(Bidirectional(LSTM(100, dropout=0.2, recurrent_dropout=0.2)))
-    #a fully connected layer with a softmax activation function
     model.add(Dense(len(label_encoder.classes_), activation='softmax'))
 
-    # compile lstm model with initial learning rate
+    # Compile the LSTM model
     initial_learning_rate = 0.001
-    # schedule learning rate (decreases learning rate by 10% every epoch).
     lr_schedule = LearningRateScheduler(lambda epoch: initial_learning_rate * 0.9 ** epoch)
-    # optimize model using optimization algorithm
     optimizer = Adam(learning_rate=initial_learning_rate)
-
-    #configure model for training
     model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
-    # fit model on training data
-    model.fit(X_train, y_train, epochs=10, batch_size=32, validation_split=0.1, callbacks=[lr_schedule])
+    # Fit the model on training data
+    model.fit(X_train, y_train, epochs=2, batch_size=32, validation_split=0.1, callbacks=[lr_schedule])
 
-    # make predictions on test set
+    # Predictions on the test set
     y_pred_probs = model.predict(X_test)
     y_pred = y_pred_probs.argmax(axis=1)
 
-    # calculate and print accuracy of model
+    # Accuracy of the model
     accuracy = accuracy_score(y_test, y_pred)
     print(f"Accuracy: {accuracy:.2f}")
 
-    # print additional evaluation metrics in form of classification report
+    # Evaluation metrics
     print('Classification Report:\n', classification_report(y_test, y_pred, zero_division=1))
-    
+
+    # Test on new input
+    while True:
+        text = input("Enter text for classification (type 'exit' to end): ")
+
+        if text.lower() == 'exit':
+            break
+
+        # Preprocess the new input
+        text_sequence = tokenizer.texts_to_sequences([text])
+        padded_sequence = pad_sequences(text_sequence, maxlen=100, padding='post', truncating='post')
+
+        # Prediction using the trained model
+        user_input_pred_probs = model.predict(padded_sequence)
+        user_input_pred = user_input_pred_probs.argmax(axis=1)
+
+        # Predictions
+        predicted_label = label_encoder.inverse_transform(user_input_pred)[0]
+        print(f"\nNew Text: {text}\nPredicted Label: {predicted_label}\n")
+
+
+    print("\nExiting the program.")
+
 else:
     print("Column 'Textual Rating' not found in the dataset.")
