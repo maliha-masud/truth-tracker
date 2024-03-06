@@ -11,7 +11,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score, classification_report
 
 # dataset
-file_path = 'C:/Users/khizr/Downloads/pakistani_dataset_consolidated_augmented.xlsx'
+file_path = 'pakistani_dataset_consolidated_augmented.xlsx'
 data = pd.read_excel(file_path)
 
 # check if the 'Textual Rating' column exists
