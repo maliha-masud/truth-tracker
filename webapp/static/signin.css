@@ -1,0 +1,374 @@
+.e-card {
+  /* margin: 100px auto; */
+  background: transparent;
+  box-shadow: 0px 8px 28px -9px rgba(0,0,0,0.45);
+
+  position: relative;
+  display: inline-flex;
+  margin-top: 115px;
+  margin-left: 55px;
+  margin-right: 375px;
+
+  width: 470px;
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.icon2 {
+  margin-top: -55px;
+  margin-bottom: 30px;
+}
+
+.wave {
+  position: absolute;
+  width: 780px;
+  height: 795px;
+  opacity: 0.6;
+  left: 0;
+  top: 0;
+  margin-left: -50%;
+  margin-top: -70%;
+  background: linear-gradient(744deg,#af40ff,#5b42f3 60%,#00ddeb);
+}
+
+.infotop {
+  text-align: center;
+  font-size: 24px;
+  position: absolute;
+  top: 5.6em;
+  left: 0;
+  right: 0;
+
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+}
+
+.txt2 {
+  font-weight: 500;
+  font-size: 15px;
+  margin-top: 6px;
+
+  display: inline-block;
+  /* position: absolute; */
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 100;
+  position: relative;
+  top: 1em;
+  /* text-transform: lowercase; */
+}
+
+.wave:nth-child(2),
+.wave:nth-child(3) {
+  top: 210px;
+}
+
+.playing .wave {
+  border-radius: 40%;
+  animation: wave 3000ms infinite linear;
+}
+
+.wave {
+  border-radius: 40%;
+  animation: wave 55s infinite linear;
+}
+
+.playing .wave:nth-child(2) {
+  animation-duration: 4000ms;
+}
+
+.wave:nth-child(2) {
+  animation-duration: 50s;
+}
+
+.playing .wave:nth-child(3) {
+  animation-duration: 5000ms;
+}
+
+.wave:nth-child(3) {
+  animation-duration: 45s;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/********************************************************************/
+
+.vertical-line {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 47%; /* Adjust the position as needed */
+  width: 1.5px;
+  background-color: rgb(190, 187, 187);
+}
+
+/********************************************************************/
+
+.wrapper {
+    --input-focus: #2d8cf0;
+    --font-color: #FFFFFF;
+    --font-color-sub: #757373;
+    
+    display: inline-flex;
+    flex-direction: row; /* Change flex-direction to row */
+    justify-content: space-around; /* Adjust as needed */
+
+    --main-color: #323232;
+
+    align-items: center;
+
+    margin-bottom: 100px;
+  }
+  
+  /* switch card */
+  .switch {
+    transform: translateY(-520px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 19px;
+    width: 50px;
+    height: 20px;
+  }
+  
+  .card-side::before {
+    position: absolute;
+    content: 'Log in';
+    left: -70px;
+    top: 0;
+    width: 100px;
+    font-weight: bolder;
+    color: var(--font-color);
+  }
+  
+  .card-side::after {
+    position: absolute;
+    content: 'Sign up';
+    left: 70px;
+    top: 0;
+    width: 100px;
+    text-decoration: none;
+    color: var(--font-color);
+    /* font-weight: 600; */
+  }
+  
+  .toggle {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: 4px 4px black;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--font-color-sub);
+    transition: 0.3s;
+  }
+  
+  .slider:before {
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    left: -2px;
+    bottom: 2px;
+    background-color: var(--font-color);
+    box-shadow: 0 3px 0 black;
+    transition: 0.3s;
+  }
+  
+  .toggle:checked + .slider {
+    background-color: var(--input-focus);
+  }
+  
+  .toggle:checked + .slider:before {
+    transform: translateX(30px);
+  }
+  
+  .toggle:checked ~ .card-side:before {
+    font-weight: normal;
+  }
+  
+  .toggle:checked ~ .card-side:after {
+    font-weight: bolder;
+  }
+  
+  /* card */ 
+  
+  .flip-card__inner {
+    margin-top: 35px;
+
+    width: 520px;
+    height: 350px;
+    position: relative;
+    background-color: transparent;
+    perspective: 1000px;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .toggle:checked ~ .flip-card__inner {
+    transform: rotateY(180deg);
+  }
+  
+  .toggle:checked ~ .flip-card__front {
+    box-shadow: none;
+  }
+  
+  .flip-card__front, .flip-card__back {
+    width: 520px;
+    height: 550px;
+
+    padding: 20px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* background: lightgrey; */
+    gap: 20px;
+    border-radius: 15px;
+    /* border: 2px solid var(--main-color); */
+    box-shadow: 4px 4px var(--main-color);
+
+    background-color: rgb(140, 140, 255);
+    background-image: radial-gradient(
+        at 88% 40%,
+        rgb(246, 129, 234) 0px,
+        transparent 85%
+      ),
+      radial-gradient(at 49% 30%, rgb(194, 136, 189) 0px, transparent 85%),
+      radial-gradient(at 14% 26%, rgb(126, 126, 255) 0px, transparent 85%),
+      radial-gradient(at 0% 64%, rgb(169, 123, 245) 0px, transparent 85%),
+      radial-gradient(at 41% 94%, rgb(225, 177, 242) 0px, transparent 85%),
+      radial-gradient(at 100% 99%, rgb(57, 57, 189) 0px, transparent 85%);
+  }
+  
+  .flip-card__back {
+    width: 100%;
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .title {
+    margin: 20px 0 20px 0;
+    font-size: 25px;
+    font-weight: 900;
+    /* text-align: center; */
+    color: var(--font-color);
+  }
+  
+  .flip-card__input {
+    width: 310px;
+    height: 40px;
+    border-radius: 9px;
+    border: 2px solid var(--main-color);
+    background-color: var(--font-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--main-color);
+    padding: 5px 10px;
+    outline: none;
+  }
+  
+  .flip-card__input::placeholder {
+    color: var(--font-color-sub);
+    opacity: 0.8;
+  }
+  
+  .flip-card__input:focus {
+    border: 2px solid var(--input-focus);
+  }
+  
+  .flip-card__btn:active, .button-confirm:active {
+    box-shadow: 0px 0px var(--main-color);
+    transform: translate(3px, 3px);
+  }
+  
+  .flip-card__btn {
+    margin: 20px 0 20px 0;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--font-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--font-color-sub);
+    cursor: pointer;
+  } 
+
+/******************************************/
+.space-word {
+  visibility: hidden;
+}
+
+.vowel {
+  display: inline-block;
+  visibility: hidden;
+}
+
+.animated-word {
+  display: inline-block;
+  position: relative;
+  color: rgb(255, 190, 244);
+
+  font-size: 16px;
+  width: 68px; /* Fixed width for the animated word */
+  text-align: center; /*Center the content*/
+
+  padding: 2px;
+}
+
+.animated-word span {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  display: none;
+  animation: fadeInOut 8s infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

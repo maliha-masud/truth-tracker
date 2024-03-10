@@ -1,0 +1,100 @@
+.mantra {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fancy font */
+  font-size: 1.2em;
+  color: #faecff;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  text-shadow: 2px 2px 0 #000; /* Adjust the shadow offset for the slant effect */
+  margin-top: 20px;
+
+  opacity: 0;
+  animation: floatFromBottom 1s ease forwards; animation-delay: 1s;
+}
+
+/* === removing default button style ===*/
+.tbutton {
+    margin-top: 55px;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    border: none;
+    display: flex; /* Added to use flexbox */
+    justify-content: center; /* Added to center horizontally */
+    cursor: default;
+
+    animation: floatFromTop 1s ease forwards;
+  }
+  
+  /* button styling */
+.tbutton {
+    /* --border-right: 6px; */
+    --text-stroke-color: rgba(255,255,255,0.6);
+    --animation-color: #faecff;
+    --fs-size: 6.5em;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: var(--fs-size);
+    font-family: Georgia, cursive;
+    position: relative;
+    /* text-transform: uppercase; */
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    cursor: default;
+  }
+  /* this is the text, when you hover on button */
+  .hover-text {
+    position: absolute;
+    box-sizing: border-box;
+    content: attr(data-text);
+    color: var(--animation-color);
+    width: 0%;
+    inset: 0;
+    /* border-right: var(--border-right) solid var(--animation-color); */
+    overflow: hidden;
+    white-space: nowrap;
+    transition: 1.27s;
+    -webkit-text-stroke: 1px var(--animation-color);
+    cursor: default;
+  }
+  /* hover */
+  .tbutton:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color));
+    cursor: default;
+  }
+
+  /* Add this CSS rule */
+.tbutton.hovered .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color));
+  cursor: default;
+  
+  border-right: hidden;
+}
+
+/****************************/
+.smtbtn{
+  margin-top: 20.5px;
+  height: auto;
+  background: transparent;
+
+  border: none;
+  display: flex;
+  justify-content: center;
+  cursor: default;
+
+  animation: floatFromTop 1s ease forwards;
+
+  --text-stroke-color: rgba(255,255,255,0.6);
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: 3em;
+  font-family: Georgia, cursive;
+  position: relative;
+
+  color: #faecff;
+  width: 100%;
+
+  text-shadow: 0 0 10px #faecff;
+}

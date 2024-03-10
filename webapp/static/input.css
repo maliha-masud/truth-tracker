@@ -1,0 +1,103 @@
+@keyframes fadeIn {
+    from {
+      opacity: 0; /* Start with transparency */
+    }
+    to {
+      opacity: 1; /* Fully visible */
+    }
+  }
+
+.prompt{
+    font-size: 15px;
+    color: white;
+    margin-left: 90px;
+    display: inline;
+
+    animation: fadeIn 2.2s ease-in-out;
+}
+
+.imp-prompt {
+    display: inline;
+    font-size: 15px;
+    color: red;
+
+    animation: fadeIn 2.2s ease-in-out;
+}
+
+.info__icon {
+    display: inline;
+    margin-left: 765px;
+
+    animation: fadeIn 2.2s ease-in-out;
+}
+
+.info__icon path {
+  fill: #ffffff;
+}
+
+.edit-text.main{
+    margin-top: 5px;
+    margin-left: 90px;
+    width: 900px;
+    height: 255px; 
+    
+    padding: 10px;
+    border: 1px solid #000;
+    background-color: white;
+    color: rgb(72, 69, 69);
+    font-size: 14.5px;
+
+    animation: fadeIn 2.2s ease-in-out;
+}
+
+.edit-text::placeholder {
+  color: #aaa;
+}
+
+.warning{
+    color: rgb(227, 82, 82);
+    margin-left: 90px;
+    display: none;
+    /* position: absolute;
+    right: 0;
+    margin-right: 180px; */
+}
+
+/****************/
+.btn3 {
+  color: purple;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid purple;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-weight: bold;
+  background: transparent;
+  position: relative;
+  transition: all 1s;
+  overflow: hidden;
+
+  margin-top: 25px;
+  left: 42%;
+}
+
+.btn3:hover {
+  color: white;
+}
+
+.btn3::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 0%;
+  top: 0;
+  left: -40px;
+  transform: skewX(45deg);
+  background-color: purple;
+  z-index: -1;
+  transition: all 1s;
+}
+
+.btn3:hover::before {
+  width: 160%;
+}

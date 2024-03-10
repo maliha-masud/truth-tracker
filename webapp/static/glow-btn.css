@@ -1,0 +1,181 @@
+#start_btn {
+  outline: none;
+}
+
+.stbtn {
+  border: none;
+  width: 16.25em;
+  height: 4.25em;
+  border-radius: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 58px;
+  background: #1C1A1C;
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+
+  opacity: 0;
+  animation: floatFromBottom 1.5s ease forwards; animation-delay: 1s;
+}
+
+.stbtn .text {
+  font-weight: 700;
+  color: #FFFFFF;
+  font-size: medium;
+  margin-right: 18px;
+}
+
+.stbtn:hover {
+  background: linear-gradient(0deg, #A47CF3, #683FEA);
+  transform: translateY(-2px);
+}
+
+.stbtn:hover .text {
+  color: white;
+}
+
+.stbtn:hover .sparkle {
+  fill: white;
+  transform: scale(1.2);
+}
+
+.icon-arrow {
+  width: 10px;
+  /* margin-left: -8px; */
+  margin-right: 6px;
+}
+
+/* SVG animations */
+#arrow-icon-one,
+#arrow-icon-two,
+#arrow-icon-three {
+  transition: 0.4s;
+  transform: scale(0.45) translateY(65%);
+  fill: #FFFFFF;
+}
+
+.stbtn:hover #arrow-icon-one {
+  transform: translateX(0%) scale(0.55) translateY(40%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.stbtn:hover #arrow-icon-two {
+  transform: translateX(0%) scale(0.55) translateY(40%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+.stbtn:hover #arrow-icon-three {
+  transform: translateX(0%) scale(0.55) translateY(40%);
+  animation: color_anim 1s infinite 0.2s;
+}
+
+/* SVG animations */
+@keyframes color_anim {
+  0% {
+      fill: white;
+  }
+
+  50% {
+      fill: #683FEA;
+  }
+
+  100% {
+      fill: white;
+  }
+}
+
+  /*****
+  ******
+  ******/
+
+  button.learn-more {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    width: 12rem;
+    height: auto;
+
+    margin-left: 3.7rem;
+   }
+   
+   button.learn-more .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin-top: 1.2px;
+    width: 2.4rem;
+    height: 2.4rem;
+    background: #e4e4e4;
+    border-radius: 1.625rem;
+   }
+   
+   button.learn-more .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #0e0c0c;
+   }
+   
+   button.learn-more .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.35rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+   }
+   
+   button.learn-more .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #0e0c0c;
+    border-right: 0.125rem solid #0e0c0c;
+    transform: rotate(45deg);
+   }
+   
+   button.learn-more .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.52rem 0;
+    margin: 0 0 0 0.67rem;
+    color: #e4e4e4;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+    width: 176%;
+
+    font-size: 0.9rem;
+   }
+   
+   button:hover .circle {
+    width: 172%;
+   }
+   
+   button:hover .circle .icon.arrow {
+    background: #0e0c0c;
+    transform: translate(1rem, 0);
+   }
+   
+   button:hover .button-text {
+    color: #0e0c0c;
+   }

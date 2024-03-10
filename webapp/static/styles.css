@@ -1,0 +1,82 @@
+body {
+    background: linear-gradient(45deg, #280337, #4a0661, #4f1a63, #4b2b79, #631d79, #2b0e92, #412461);
+    background-size: 400% 400%;
+    animation: gradientAnimation 10s cubic-bezier(0.5, 0.1, 0.55, 1) infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.navbar {
+    background-color: #000000; /* Dark navbar background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    color: #7d49b1 !important; /* Purple color for navbar brand */
+    font-size: 20px; /* Increase font size */
+    font-weight: bold; /* Make font bold */
+    font-family: "Times New Roman", cursive;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff !important; /* White text color for navbar links */
+}
+
+.navbar-toggler-icon {
+    background-color: #ffffff; /* White color for the toggler icon */
+}
+
+.container {
+    margin-top: 20px;
+    margin-bottom: 200px;
+}
+
+.lead {
+    font-size: 24px; /* Large font size */
+    font-weight: 400; /* Normal font weight */
+    color: #ffffff; /* White color */
+}
+
+/***********/
+.content {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.content.fade-out {
+    opacity: 1;
+}
+
+/* Keyframe animation for floating in from the top */
+@keyframes floatFromTop {
+    0% {
+        transform: translateY(-45%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Keyframe animation for floating in from the bottom */
+@keyframes floatFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

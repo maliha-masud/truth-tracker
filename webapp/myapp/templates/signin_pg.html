@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{% static 'tt-icon.png' %}" type="image/x-icon">
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="{% static 'styles.css' %}" rel="stylesheet"/>
+        <link href="{% static 'loader.css' %}" rel="stylesheet"/>
+        <link href="{% static 'glow-btn.css' %}" rel="stylesheet"/>
+        <link href="{% static 'title.css' %}" rel="stylesheet"/>
+        <link href="{% static 'navbtn.css' %}" rel="stylesheet"/>
+        <link href="{% static 'register.css' %}" rel="stylesheet"/>
+        <link href="{% static 'input.css' %}" rel="stylesheet"/>
+        <link href="{% static 'signin.css' %}" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="e-card playing">
+            <div class="image"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>  
+            <div class="infotop">
+                <img src="{% static 'tt-white.png' %}" class="icon2" width="105" height="105">
+                <br>      
+                Truth Tracker
+                <br> <div class = "txt2">Sign in for a<div class = "vowel">n</div></div>
+                    <div class="animated-word">
+                        complete <span></span>
+                    </div>
+                    <div class = "txt2"><span class = "space-word">..</span>experience</div>
+                <div class="name">Let's detect possible decept</div>
+            </div>
+        </div>
+        <!-- ------------ -->
+        <div class="vertical-line"></div>
+        <!-- ------------ -->
+        <div class="wrapper">
+            <div class="card-switch">
+            <label class="switch">
+               <input type="checkbox" class="toggle">
+               <span class="slider"></span>
+               <span class="card-side"></span>
+                 <div class="flip-card__inner">
+                  <div class="flip-card__front">
+                     <div class="title">Log in</div>
+                     <form class="flip-card__form" action="">
+                        <input class="flip-card__input" name="email" placeholder="Email" type="email">
+                        <input class="flip-card__input" name="password" placeholder="Password" type="password">
+                         <button class="flip-card__btn">Let`s go!</button>
+                     </form>
+                  </div>
+                  <div class="flip-card__back">
+                     <div class="title">Sign up</div>
+                        <form class="flip-card__form" action="">
+                        <input class="flip-card__input" placeholder="Name" type="name">
+                        <input class="flip-card__input" name="email" placeholder="Email" type="email">
+                        <input class="flip-card__input" name="password" placeholder="Password" type="password">
+                        <button class="flip-card__btn">Confirm!</button>
+                     </form>
+                    </div>
+                </div> 
+            </label>
+            </div>   
+        </div>
+    <!-- <div id="overlay"></div>
+    <div id="login_form" class="card">
+        <div class="card_title__container">
+            <span class="card_title">Login</span>
+            <p class="card_paragraph">
+                Sign in with your email for a richer experience
+            </p>
+        </div>
+        <hr class="line" />
+        <div class="input-group" id = "email">
+            <input required="" type="text" name="text" autocomplete="off" class="input">
+            <label class="user-label">Email</label>
+        </div>
+        <div class="input-group" id = "password">
+        <input required="" type="password" name="text" autocomplete="off" class="input">
+        <label class="user-label">Password</label>
+        </div>
+        <p class="card__list">
+            Forgot Your Password?
+        </p>
+        <button class="button">Login</button>
+        <p class="card__sign">
+            Don't have an account? Sign Up
+        </p>
+        <button class="learn-more" id="input_not_login">
+            <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Continue without logging in</span>
+        </button>
+    </div> -->
+    
+    <!-- <script>
+        // // Function to handle form submission
+        // function handleFormSubmit(event) {
+        //     // Prevent default form submission
+        //     event.preventDefault();
+
+        //     // Retrieve the input field value
+        //     const firstName = document.querySelector('.input').value;
+
+        //     // Perform any validation if needed
+
+        //     // Submit the form data to the server (or perform any other action)
+        //     console.log('First Name:', firstName);
+
+        //     // Reset the form fields if needed
+        //     document.querySelector('.input').value = '';
+        // }
+
+        // // Function to handle sign up link click
+        // function handleSignUpClick() {
+        //     // Redirect the user to the sign up page or perform any other action
+        //     console.log('Redirecting to sign up page...');
+        // }
+
+        // // Add event listener for form submission
+        // document.querySelector('.button').addEventListener('click', handleFormSubmit);
+
+        // // Add event listener for sign up link click
+        // document.querySelector('.card__list').addEventListener('click', handleSignUpClick);
+
+        document.getElementById('input_not_login').addEventListener('click', function(){
+            setTimeout(function() {
+                window.location.href = 'input.html';
+            }, 3000); // Wait for 3 seconds (3000 milliseconds)
+        })
+
+    </script> -->
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordField = document.querySelector('#password');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const words = ["powerful", "excellent", "fantastic", "incredible", "splendid", "brilliant", "complete"];
+            let currentIndex = 0;
+            const animatedWord = document.querySelector(".animated-word");
+
+            function changeWord() {
+                if (currentIndex == 1 || currentIndex == 3) 
+                    document.querySelector(".vowel").style.visibility = "visible";
+                else  document.querySelector(".vowel").style.visibility = "hidden";
+                animatedWord.textContent = words[currentIndex];
+                currentIndex = (currentIndex + 1) % words.length;
+            }
+
+            setInterval(changeWord, 2000); // Change word every 2 seconds
+        });
+    </script>
+    </body>
+</html>

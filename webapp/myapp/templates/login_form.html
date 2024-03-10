@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="register.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <div id="overlay"></div>
+  <div id="login_form" class="card">
+    <div class="card_title__container">
+        <span class="card_title">Login</span>
+        <p class="card_paragraph">
+            Sign in with your email for a richer experience
+        </p>
+    </div>
+    <hr class="line" />
+    <div class="input-group" id = "email">
+        <input required="" type="email" name="text" autocomplete="off" class="input">
+        <label class="user-label">Email</label>
+    </div>
+    <div class="input-group" id = "password">
+      <input required="" type="password" name="text" autocomplete="off" class="input">
+      <label class="user-label">Password</label>
+    </div>
+    <p class="card__list">
+        Forgot Your Password?
+    </p>
+    <button class="button">Login</button>
+    <p class="card__sign">
+        Don't have an account? Sign Up
+    </p>
+    <button class="learn-more" id="input_not_login">
+        <span class="circle" aria-hidden="true">
+        <span class="icon arrow"></span>
+        </span>
+        <span class="button-text">Continue without logging in</span>
+    </button>
+  </div>
+  
+  <!-- <script>
+    // // Function to handle form submission
+    // function handleFormSubmit(event) {
+    //     // Prevent default form submission
+    //     event.preventDefault();
+
+    //     // Retrieve the input field value
+    //     const firstName = document.querySelector('.input').value;
+
+    //     // Perform any validation if needed
+
+    //     // Submit the form data to the server (or perform any other action)
+    //     console.log('First Name:', firstName);
+
+    //     // Reset the form fields if needed
+    //     document.querySelector('.input').value = '';
+    // }
+
+    // // Function to handle sign up link click
+    // function handleSignUpClick() {
+    //     // Redirect the user to the sign up page or perform any other action
+    //     console.log('Redirecting to sign up page...');
+    // }
+
+    // // Add event listener for form submission
+    // document.querySelector('.button').addEventListener('click', handleFormSubmit);
+
+    // // Add event listener for sign up link click
+    // document.querySelector('.card__list').addEventListener('click', handleSignUpClick);
+
+    document.getElementById('input_not_login').addEventListener('click', function(){
+        setTimeout(function() {
+            window.location.href = 'input.html';
+        }, 3000); // Wait for 3 seconds (3000 milliseconds)
+    })
+
+  </script> -->
+
+    <script>
+        function togglePasswordVisibility() {
+        var passwordField = document.querySelector('#password');
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+        } else {
+            passwordField.type = 'password';
+        }
+        }
+    </script>
+</body>
+</html>
