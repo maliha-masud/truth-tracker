@@ -9,6 +9,9 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import accuracy_score, classification_report
+from imblearn.over_sampling import SMOTE
+from imblearn.under_sampling import RandomUnderSampler
+from sklearn.utils import class_weight
 
 file_path = 'pakistani_dataset_consolidated_augmented.xlsx'
 data = pd.read_excel(file_path)
@@ -20,6 +23,10 @@ if 'Textual Rating' in data.columns:
     tfidf = TfidfVectorizer(stop_words='english', max_features=5000, ngram_range=(1, 2))
     X = tfidf.fit_transform(data['Text'])
     y = data['Textual Rating']
+
+    # countering class imbalance
+    smote = SMOTE(random_state=42)
+    X_resampled, y_resampled = smote.fit_resample(X, y)
 
     X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
