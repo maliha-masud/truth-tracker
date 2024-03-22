@@ -8,6 +8,9 @@ urlpatterns = [
     path("signin/", views.signin, name = "signin_pg"),
     path("about-dataset/", views.about_dataset, name = "about_dataset"),
     path("results/", views.output, name = "results"),
+    path("project-overview/", views.project_overview, name = "project-overview"),
+    path("user-manual/", views.user_manual, name = "user-manual"),
+    path("faq/", views.faq, name = "faq"),
 
     path('process-text/', views.process_text),
 ]
