@@ -30,6 +30,15 @@ def output(request):
 
 def signin(request):
     return render(request, "signin_pg.html")
+
+def project_overview(request):
+    return render(request,"project_overview.html")
+
+def user_manual(request):
+    return render(request,"user_manual.html")
+
+def faq(request):
+    return render(request,"faq.html")
     
 @csrf_exempt
 def process_text(request):
