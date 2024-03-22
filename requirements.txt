@@ -8,5 +8,14 @@ tensorflow==2.11.1
 matplotlib==3.4.3
 openpyxl==3.1.2
 
+nltk==3.6.3
+textblob==0.15.3
+weasel==0.1.1
+seaborn==0.13.2
+spacy==3.0.0
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.0.0/en_core_web_sm-3.0.0.tar.gz
+
+seaborn==0.13.2
+
 Django==4.1.13
 django-bootstrap4==3.0.0

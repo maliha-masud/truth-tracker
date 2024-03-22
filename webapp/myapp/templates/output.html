@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Results | Truth Tracker{% endblock %}
+
+<!-- URL	Title	Text	Review Date	Textual Rating	Publisher Site	Publisher Name	Claim Date	Claimant -->
+
+{% block content %}
+<div class="container">
+    <button class="smtbtn mx-auto" disabled="true">
+        &nbsp;Truth Tracker&nbsp;
+    </button>
+    <!-- <p class = "prompt"> Your text: </p> -->
+    <p>User's entered text: {{ text }}</p>
+    <p>Result from voting system: {{ result }}</p>
+    <p>Sentiment: {{ sentiment }}</p>
+    <p>Sentiment Score: {{ sentiment_score }}</p>
+    <p>Statement Type: {{ personal_classification }}</p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+</script>
+{% endblock %}
