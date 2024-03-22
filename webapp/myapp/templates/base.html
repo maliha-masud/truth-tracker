@@ -78,7 +78,7 @@
                 </button>
                 <br>
                 <button>
-                    <a href="about-dataset/" class="btn2" id="about"><span class="spn2">About the Dataset</span></a>
+                    <a href="/about-dataset/" class="btn2" id="about_btm"><span class="spn2">About the Dataset</span></a>
                 </button>
                 <br>
                 <button>
@@ -130,23 +130,43 @@
         <p class = "txt mx-auto"> A fact checker for Pakistani news, available on the web. Made by FAST Students.</p>
     </nav>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $(".loader-container").hide(); // Hide the loader initially
         });
-        $("#about").click(function() {
+        //$("#about").click(function() {
+        function animateAndNavigate(elementId, destination) {
+            console.log("Button clicked");
+            event.preventDefault(); // Prevent default link behavior
             setTimeout(function() {
                 $(".loader-container").show(); // Show the loader when the button is clicked
-            }, 200); // Adjust the time in milliseconds (3 seconds in this example)
+            }, 10);
 
             setTimeout(function() {
-                $(".loader-container").hide(); // Hide the loader after a few seconds (change the value as needed)
-            }, 3000); // Adjust the time in milliseconds (3 seconds in this example)
-            
-            setTimeout(function() {
-                window.location.href = 'about-dataset/';
-            }, 2800); // Wait for 3 seconds (3000 milliseconds)
+                window.location.href = '/about-dataset/';
+            }, 2000);
+        }
+
+        // Add click event listener to the button with id "about"
+        $("#about").click(function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            animateAndNavigate("#about", "/about-dataset/");
         });
+
+        $("#about_btm").click(function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            animateAndNavigate("#about", "/about-dataset/");
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // This enables smooth scrolling
+            });
+        });
+
+        // $("#otherElement").click(function(event) {
+        // event.preventDefault(); // Prevent default link behavior
+        // animateAndNavigate("#otherElement", "/other-destination/");
+        // });
     </script>
 
 </body>
