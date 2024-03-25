@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Truth Tracker | Project Overview{% endblock %}
+
+{% block content %}
+
+<button class="smtbtn mx-auto" disabled="true">
+    &nbsp;Project Overview&nbsp;
+</button>
+    <div class="overview-1">
+    <div class="mantra mx-auto">Truth Tracker is an ai based detection system aimed at analyzing Pakistani news content using
+        machine learning models and sentiment analysis.
+    </div>
+</div>
+    <div class="overview-2">
+    <div class="mantra mx-auto">Fake news and misinformation are highly disruptive, and Problems caused by fake news
+        are on the rise due to the ever-increasing popularity of social media sites
+    </div>
+</div>
+    <div class="overview-3">
+    <div class="mantra mx-auto"> Therefore the primary objective is to detect fake news within textual content, identifying bias
+        and misinformation and offering valuable insights into the underlying factors influencing these results 
+        in order to enhance users' understanding and help combat misinformation.
+    </div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".loader-container").hide(); // Hide the loader initially
+        });
+    </script>
+{% endblock %}
