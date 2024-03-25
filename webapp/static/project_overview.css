@@ -1,0 +1,34 @@
+.container {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.overview-1 .mantra {
+    width: 1000px;
+    background: #a94ce6;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 0.5vmin solid #05060f;
+    box-shadow: 0.4rem 0.4rem #05060f;
+    overflow: hidden;
+}
+
+.overview-2 .mantra {
+    width: 1000px;
+    background: #fb88f5;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 0.5vmin solid #05060f;
+    box-shadow: 0.4rem 0.4rem #05060f;
+    overflow: hidden;
+}
+
+.overview-3 .mantra {
+    width: 1000px;
+    background: #8794f9;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 0.5vmin solid #05060f;
+    box-shadow: 0.4rem 0.4rem #05060f;
+    overflow: hidden;
+}
