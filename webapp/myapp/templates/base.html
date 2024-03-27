@@ -20,6 +20,8 @@
     <link href="{% static 'input.css' %}" rel="stylesheet"/>
     <link href="{% static 'signin.css' %}" rel="stylesheet"/>
     <link href="{% static 'project_overview.css' %}" rel="stylesheet"/>
+    <link href="{% static 'faq.css' %}" rel="stylesheet"/>
+
 
 </head>
 
@@ -84,7 +86,7 @@
                 </button>
                 <br>
                 <button>
-                    <a href="#" class="btn2"><span class="spn2">FAQ</span></a>
+                    <a href="faq/" class="btn2" id="faq"><span class="spn2">FAQ</span></a>
                 </button>
             </ul>
         </div>
@@ -146,7 +148,7 @@
             }, 10);
 
             setTimeout(function() {
-                window.location.href = '/about-dataset/';
+                window.location.href = destination;
             }, 2000);
         }
 
@@ -168,6 +170,14 @@
         $("#project-overview").click(function(event) {
             event.preventDefault(); // Prevent default link behavior
             animateAndNavigate("#project-overview", "/project-overview/");
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // This enables smooth scrolling
+            })
+        });
+        $("#faq").click(function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            animateAndNavigate("faq", "/faq/");
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth' // This enables smooth scrolling
