@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Truth Tracker | FAQ{% endblock %}
+{% block content %}
+<button class="smtbtn mx-auto" disabled="true">
+    &nbsp;Frequently Asked Questions&nbsp;
+</button>
+<div class="faq-container-wrapper">
+<div class="faq-container">
+    <div class="inner-item">
+        <div class="card-front">
+            <p>What is Truth Tracker?
+            </p>
+        </div>
+        <div class="card-back">
+            <p>An AI-based detection system designed to identify misinformation,
+                and fake news across various online platforms.</p>
+        </div>
+    </div>
+</div>
+<div class="faq-container">
+    <div class="inner-item">
+        <div class="card-front">
+            <p>How does Truth Tracker work?
+            </p>
+        </div>
+        <div class="card-back">
+            <p>It uses advanced machine learning algorithms to analyze textual content. It evaluates the credibility of sources,
+                 fact-checks claims, and identifies patterns associated with misinformation.</p>
+        </div>
+    </div>
+</div>
+<div class="faq-container">
+    <div class="inner-item">
+        <div class="card-front">
+            <p>What types of misinformation can Truth Tracker detect?
+            </p>
+        </div>
+        <div class="card-back">
+            <p>Truth Tracker can detect various forms of misinformation, including false claims,
+                 misleading information, and satire.</p>
+        </div>
+    </div>
+</div>
+<div class="faq-container">
+    <div class="inner-item">
+        <div class="card-front">
+            <p>Is Truth Tracker accurate?
+            </p>
+        </div>
+        <div class="card-back">
+            <p> While Truth Tracker strives for accuracy, it's important to note that no system is perfect.
+                Our AI algorithms continuously learn and adapt to new information to improve accuracy over time.</p>
+        </div>
+    </div>
+</div>
+<div class="faq-container">
+    <div class="inner-item">
+        <div class="card-front">
+            <p>Does Truth Tracker only work for English content?
+            </p>
+        </div>
+        <div class="card-back">
+            <p>Currently, Truth Tracker primarily supports English-language content.
+                 However, we are continuously working to expand language support in future updates.</p>
+        </div>
+    </div>
+</div>
+<div class="faq-container">
+    <div class="inner-item">
+        <div class="card-front">
+            <p>Is Truth Tracker free to use?
+            </p>
+        </div>
+        <div class="card-back">
+            <p>Yes, Truth Tracker is free to use for all users.
+             We believe in promoting information transparency and combating misinformation for the benefit of society.</p>
+        </div>
+    </div>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".loader-container").hide(); // Hide the loader initially
+    });
+</script>
+{% endblock %}
