@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Truth Tracker Extension</title>
+  <style>
+    :root {
+      --primary-color: #5B4B8A; /* Dark purple */
+      --hover-color: #6A5ACD; /* Lighter purple for hover effect */
+      --text-color: #FFFFFF; /* White for better contrast */
+      --background-color: #4C3575; /* Deep purple for the background */
+      --container-bg-color: #6441A5; /* Mid-tone purple */
+      --shadow-color: rgba(0, 0, 0, 0.2); /* Darker shadow for better contrast */
+      --button-gradient-start: #957DAD; /* Lighter purple gradient start */
+      --button-gradient-end: #5B4B8A; /* Darker purple gradient end */
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      padding: 20px;
+      min-width: 300px;
+      background-color: var(--background-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: linear-gradient(135deg, #f8fcff 0%, #f0f7ff 100%);
+    }
+    .container {
+      max-width: 400px;
+      text-align: center;
+      background-color: var(--container-bg-color);
+      padding: 20px; /* Adjusted padding to make the container less lengthy */
+      border-radius: 20px;
+      box-shadow: 5px 5px 15px var(--shadow-color),
+                  -5px -5px 15px #ffffff;
+      transition: transform 0.3s ease;
+    }
+    .container:hover {
+      transform: translateY(-10px);
+    }
+    h2 {
+      margin-top: 0;
+      color: var(--text-color);
+      font-size: 24px;
+      letter-spacing: 1px;
+    }
+    input[type="text"], button {
+      width: calc(100% - 40px);
+      margin-bottom: 20px;
+      padding: 15px;
+      border: none;
+      border-radius: 30px;
+      outline: none;
+      box-shadow: inset 2px 2px 5px #babecc,
+                  inset -5px -5px 10px #ffffff;
+      transition: all 0.3s ease;
+    }
+    input[type="text"]:focus, button:focus {
+      border-color: var(--hover-color);
+      box-shadow: none;
+    }
+    #searchButton {
+      background-image: linear-gradient(to right, var(--button-gradient-start), var(--button-gradient-end));
+      color: #fff;
+      cursor: pointer;
+      border: none;
+      box-shadow: 2px 2px 5px #babecc,
+                  -2px -2px 5px #ffffff;
+    }
+    #searchButton:hover {
+      animation: wiggle 0.3s ease-in-out;
+    }
+    #resultText {
+      margin-top: 25px;
+      font-size: 16px;
+      color: var(--text-color);
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-1deg); }
+      50% { transform: rotate(1deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Truth Tracker</h2>
+    <input type="text" id="searchInput" placeholder="Enter search text...">
+    <button id="searchButton">Search</button>
+    <p id="resultText"></p> <!-- Display classification result here -->
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
