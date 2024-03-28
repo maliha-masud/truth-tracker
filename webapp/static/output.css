@@ -1,0 +1,338 @@
+header {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 600;
+  /* background-image: linear-gradient(to left, #84bedf, rgb(213, 167, 255)); */
+  background-image: linear-gradient(#ffffff, #fec8ff);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-style: italic;
+}
+
+.big{
+  font-size: 30px;
+  display: block;
+}
+
+.results{
+  display: inline-block;
+  font-size: 16px;
+  color: white;
+  margin-left: 4px;
+}
+
+.results.classification {
+  flex-grow: 1;
+}
+.classification {
+  display: inline-flex;
+  width: 100%;
+}
+
+.results.sentiment {
+  flex-grow: 1;
+}
+.sentiment {
+  display: inline-flex;
+  width: 100%;
+}
+
+/*****************************************************/
+/****************** USER INPUT ******************/
+.my-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 10px;
+}
+
+.my-window {
+  /* position: absolute; */
+  height: 165px;
+  width: 1130px;
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 15px;
+  overflow: hidden;
+  
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.window-title {
+  position: sticky;
+  top: 0;
+  z-index: 1; /* Ensure the title stays above other content */
+  height: 35px;
+  font-size: 25px;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.window-title p {
+  color: #fff;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.window-buttons {
+  display: flex;
+  align-items: center;
+}
+.window-button {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin: 5px;
+  transition: background-color 0.2s ease;
+}
+.window-button.close {
+  background-color: red;
+}
+.window-button.reduce {
+  background-color: #ff0;
+}
+.window-button.fullscreen {
+  background-color: #0f0;
+}
+
+.console {
+  width: 100%;
+  height: calc(100% + 15px);
+  padding-left: 8px;
+  background-color: #000;
+  color: #fff;
+}
+
+.console pre {
+  margin: 0;
+  padding: 5px;
+  font-size: 15px;
+
+  white-space: pre-wrap; /* Wrap the text within the container */
+  word-wrap: break-word; /* Ensure long words are broken to prevent overflow */
+}
+
+.console pre code {
+  color: #0f0;
+  outline: none;
+}
+
+.console::-webkit-scrollbar {
+  width: 8px;
+}
+
+.console::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+.console::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border-radius: 10px;
+  border: 2px solid #333;
+}
+
+.console::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+
+/*****************************************************/
+/****************** RANKED ENTITIES ******************/
+#ranked-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.circle-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  position: relative;
+  cursor: pointer;
+  height: 200px;
+  border-radius: 50%;
+  border: none;
+  /*background: #333;*/
+  background: linear-gradient(35deg, #046d93, #61169e, #950465);
+  color: #e5e5e5;
+  font-weight: 600;
+  box-shadow: inset 10px 10px 29px #420f6e,
+  inset -20px -20px 39px #041843;
+  font-size: 16px;
+  margin: 18px;
+}
+/* @keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+} */
+
+.circle-stat span {
+  position: relative; /* Ensures the span remains within the button */
+  z-index: 2; /* Places the text above the circle */
+}
+
+.circle-stat:hover {
+  color: #280337; /* Change text color on hover */
+}
+
+.circle-stat::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+/*  left: -10px;
+  top: -10px; */
+  border-radius: 50%;
+  /*width: calc(100% + 20px);*/
+  width: calc(95%);
+  height: calc(95%);
+  background: linear-gradient(35deg, #a8daec, #e2bdff, #f9aadf);
+  filter: blur(10px);
+}
+
+.circle-stat:hover::after {
+  animation: rotcirclegr 3s linear infinite;
+  z-index: 1;
+  opacity: 80%;
+}
+
+@keyframes rotcirclegr {
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.data_type { display: none; font-size: 14px; }
+.circle-stat:hover .data_type {
+  display: block; animation: floatFromBottom 500ms ease forwards;
+}
+/* .data_type:hover::after { display: contents; } */
+
+.ner_name { display: block; }
+
+/*****************************************************/
+/****************** TRUTH METER ***********************/
+.truth-meter-container {
+  position: relative;
+  width: 900px; /* Adjust as needed */
+  height: 10px; /* Adjust as needed */
+
+  margin-bottom: 15px;
+}
+
+.truth-meter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.mycolor {
+  flex: 1;
+}
+.mycolor.true {
+  background-color: #00ff00; /* Green */
+}
+.mycolor.mostly-true {
+  background-color: #65b965; /* Light green */
+}
+.mycolor.half-true {
+  background-color: #ffff00; /* Yellow */
+}
+.mycolor.misleading {
+  background-color: #ff9933; /* Orange */
+}
+.mycolor.satire {
+  background-color: #ff0000; /* Red */
+}
+.mycolor.false {
+  background-color: #990000; /* Dark red */
+}
+/********/
+.loader-shape-3 {
+  /* position: relative; */
+  position: absolute;
+  top: calc(100% - 6px); /* Adjust as needed */
+  left: 0;
+  transform: translateX(-20%);
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+
+  scale: -1;
+}
+
+.loader-shape-3:after {
+  width: 30px;
+  height: 20px;
+  border-radius: 100%;
+  top: 50%;
+  left: 50%;
+}
+
+.loader-shape-3:before {
+  width: 20px;
+  height: 20px;
+  border-radius: 100% 100% 100% 0;
+  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 1);
+  /* background-color: white; */
+  top: 40%;
+  left: 10%;
+  transform: translate(-50%, -50%) rotate(-46deg);
+}
+
+.loader-shape-3:before,
+.loader-shape-3:after {
+  position: absolute;
+  content: "";
+} 
+.loader-shape-3:hover::before { background-color: white; cursor: pointer;}
+
+/*****************************************************/
+/**************** SENTIMENT METER *********************/
+.sentiment-scale-container {
+  position: relative;
+  width: 900px; /* Adjust as needed */
+  height: 10px; /* Adjust as needed */
+
+  margin-bottom: 15px;
+}
+.sentiment-scale {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.mycolor.positive {
+  background-color: #c41286;
+}
+.mycolor.mostly-positive {
+  background-color: #ff9efc;
+}
+.mycolor.neutral {
+  background-color: #6fbeff;
+}
+.mycolor.mostly-negative {
+  background-color: #012fc4;
+}
+.mycolor.negative {
+  background-color: hsl(275, 100%, 15%);
+}

@@ -1,15 +1,27 @@
 {% extends "base.html" %}
 
-{% block title %}Truth Tracker | Input{% endblock %}
+{% block title %}About Dataset | Truth Tracker{% endblock %}
 
 <!-- URL	Title	Text	Review Date	Textual Rating	Publisher Site	Publisher Name	Claim Date	Claimant -->
 
 {% block content %}
 <div class="container">
-    <button class="smtbtn mx-auto" disabled="true">
+    <button class="smtbtn mx-auto" disabled="true" style="margin-bottom: -205px">
+        &nbsp;About the Dataset&nbsp;
+    </button>
+</div>
+<div class="container">
+    <button class="smtbtn mx-auto" disabled="true" style="font-size: 1.05em; color: #db6fdb; margin-bottom: -165px; animation: fadeIn 3s ease forwards;">
         &nbsp;Truth Tracker&nbsp;
     </button>
 </div>
+<!-- <p style="color: white;">{{ dataset_stats }} ppp</p> -->
+<p style="color: white;">Publisher Site: {{ dataset_stats.0 }}</p>
+<p style="color: white;">Publisher Site unique: {{ dataset_stats.1 }}</p>
+<p style="color: white;">Text: {{ dataset_stats.2 }}</p>
+<p style="color: white;">Textual Rating: {{ dataset_stats.3 }}</p>
+
+<img src="{{ image_path }}" alt="Dataset Visualization">
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

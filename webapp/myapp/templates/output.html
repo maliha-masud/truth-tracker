@@ -9,15 +9,164 @@
     <button class="smtbtn mx-auto" disabled="true">
         &nbsp;Truth Tracker&nbsp;
     </button>
-    <!-- <p class = "prompt"> Your text: </p> -->
-    <p>User's entered text: {{ text }}</p>
-    <p>Result from voting system: {{ result }}</p>
-    <p>Sentiment: {{ sentiment }}</p>
-    <p>Sentiment Score: {{ sentiment_score }}</p>
-    <p>Statement Type: {{ personal_classification }}</p>
+    <div class="my-container mx-auto" style="opacity: 0; animation: fadeIn 1100ms ease forwards; animation-delay: 800ms;"> 
+        <div class="my-window"> 
+          <div class="window-title">
+            <p>Entered Text</p>
+            <div class="window-buttons">
+              <div class="window-button fullscreen"></div>
+              <div class="window-button reduce"></div>
+              <div class="window-button close"></div>
+            </div>
+          </div>
+          <div class="console">
+            <pre><code>{{ text }}</code></pre>
+          </div>
+        </div>
+    </div>      
+    <!-- <header style="margin-top: 10px;">Entered Text:</header> -->
+    <!-- <p class = "results">{{ text }}</p><br> -->
+    <header class="big" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s; margin-top: 10px;">
+        Classification:
+    </header>
+    <div class = "classification" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
+        <p class = "results classification">Result from voting system: {{ result }}</p>
+        <p class = "results classification">Ensemble Result: {{ ensemble_result }}</p>
+        {% if trustworthiness %}
+            <p class = "results classification">Multiple fields - classification: {{ multiple_classification }}</p>
+        {% else %}
+            <p class = "results classification">Multiple fields - classification: N/A</p>
+        {% endif %}
+    </div><br>
+    <div class="truth-meter-container mx-auto" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2250ms;">
+        <div class="truth-meter">
+            <div class="mycolor true"></div>
+            <div class="mycolor mostly-true"></div>
+            <div class="mycolor half-true"></div>
+            <div class="mycolor misleading"></div>
+            <div class="mycolor satire"></div>
+            <div class="mycolor false"></div>
+        </div>
+        <br> <div class="loader-shape-3" id="loader-ensemble"></div>
+    </div>
+    <br>
+    <header class="big" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
+        Sentiment Analysis:
+    </header>
+    <div class = "sentiment" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
+        <p class = "results sentiment">Sentiment: {{ sentiment }}</p>
+        <p class = "results sentiment">Sentiment Score: {{ sentiment_score }}</p>
+        <p class = "results sentiment">Statement Type: {{ personal_classification }}</p>
+    </div><br>
+    <!-- <p class = "results">Entities: {{ entities }}</p><br> -->
+    <!-- <p class = "prompt">Ranked Entities: {{ ranked_entities }}</p> -->
+    <div class="truth-meter-container mx-auto" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2250ms;">
+        <div class="sentiment-scale">
+            <div class="mycolor positive"></div>
+            <div class="mycolor mostly-positive"></div>
+            <div class="mycolor neutral"></div>
+            <div class="mycolor mostly-negative"></div>
+            <div class="mycolor negative"></div>
+        </div>
+        <br> <div class="loader-shape-3" id="loader-sentiment"></div>
+    </div>
+    <br>
+    {% if ranked_entities|length > 2 %}
+        <header class="big" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
+            Named Entities:
+        </header>
+        <div id="ranked-buttons" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
+        </div>
+        <br>
+    <!-- {% else % -->
+        <!-- Render content when ranked_entities is empty -->
+    {% endif %}
+    {% if trustworthiness %}
+        <p class="results" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
+            Multiple fields - trustworthiness: {{ trustworthiness }}
+        </p>
+        <p class="results" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
+            Multiple fields - outdated_warning: {{ outdated_warning }}
+        </p><br>
+    {% endif %}
+    <!-- <p class="results">News: {{ is_news }} Score: {{ news_score }} </p> -->
+    <!--  -->
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    // $(document).ready(function() {
+    //     $(".loader-container").hide(); // Hide the loader initially
+    // });
+    // Function to decode URL parameters
+    function decodeQueryParam(param) {
+        return decodeURIComponent(param.replace(/\+/g, ' '));
+    }
+
+    // Parsing the received query parameter for ranked_entities
+    const urlParams = new URLSearchParams(window.location.search);
+    const rankedEntitiesParam = urlParams.get('ranked_entities');
+    let ranked_entities = [];
+    if (rankedEntitiesParam) {
+        ranked_entities = JSON.parse(decodeQueryParam(rankedEntitiesParam));
+    }
+
+    // Function to generate HTML for each sublist
+    function generateHTMLForEntities(entities) {
+        var html = "";
+        entities.forEach(function(entity) {
+            // html += '<button class="circle-stat"><span>' + JSON.stringify(entity) + '</span></button>'; // Displaying only the entity text as the button label
+            // Extracting the named entity and its type
+            var ne = entity[0][0]; //var count_score = entity[1];
+            var type = entity[0][1];
+            html += '<button class="circle-stat"><span class="ner_name">' + ne
+                + '</span><span class="data_type">' + type + '</span></button>';
+        });
+        return html;
+    }
+
+    // Display entities on the page if there are more than 2 ranked entities
+    if (ranked_entities.length > 0) {
+        var rankedButtonsContainer = document.getElementById("ranked-buttons");
+        rankedButtonsContainer.innerHTML = generateHTMLForEntities(ranked_entities);
+    }
+
+    // Get the ensemble result value and set the loader position
+    var ensembleResult = "{{ ensemble_result }}";
+    var loaderPosition_e = calculateLoaderPosition(ensembleResult);
+    var loaderShape_e = document.getElementById("loader-ensemble");
+    loaderShape_e.style.left = loaderPosition_e + "%";
+
+    // Get the sentiment value and set the loader position
+    var sentiment = "{{ sentiment }}";
+    var loaderPosition_s = calculateLoaderPosition1(sentiment);
+    var loaderShape_s = document.getElementById("loader-sentiment");
+    loaderShape_s.style.left = loaderPosition_s + "%";
+
+    // Function to calculate the loader position based on the ensemble result
+    function calculateLoaderPosition(ensembleResult) {
+        var positionMap = {
+            "True": 2, //-6, 2, 10
+            "Half True": 11, //11, 19, 27
+            "Misleading": 53, //28, 36, 44
+            "Satire": 69, //44, 52, 60
+            "Mostly False": 78, //61, 69, 77
+            "False": 86 // 78, 86, 94
+        };
+        return positionMap[ensembleResult] || 50; // Default position
+    }
+
+    // Function to calculate the loader position based on the sentiment
+    function calculateLoaderPosition1(sentiment) {
+        var positionMap = {
+            "Strongly Positive": 0,
+            "Moderately Positive": 25,
+            "Neutral": 44,
+            "Moderately Negative": 65,
+            "Strongly Negative": 87
+        };
+        return positionMap[sentiment] || 50; // Default position
+    }
+
 </script>
 {% endblock %}

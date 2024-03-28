@@ -11,6 +11,8 @@ urlpatterns = [
     path("project-overview/", views.project_overview, name = "project-overview"),
     path("user-manual/", views.user_manual, name = "user-manual"),
     path("faq/", views.faq, name = "faq"),
+    
+    path('validate_text/', views.validate_text, name='validate_text'),
 
     path('process-text/', views.process_text),
 ]

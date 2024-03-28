@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Truth Tracker | Home Page{% endblock %}
+{% block title %}Home Page | Truth Tracker{% endblock %}
 
 {% block content %}
 <div class="container">
@@ -59,8 +59,8 @@
                 });
                 tempDiv.querySelector('.card__sign').addEventListener('click', function(event){
                     // loader.show(); // Show the loader when the button is clicked
-    //         setTimeout(function() {
-    //             $(".loader-container").hide(); // Hide the loader after a few seconds (c
+                //         setTimeout(function() {
+                //             $(".loader-container").hide(); // Hide the loader after a few seconds (c
                     setTimeout(function() {
                         window.location.href = 'signin/';
                     }, 1000);
@@ -82,6 +82,12 @@
                             overlay.remove();
                         }, 850); // Adjust the time according to the transition duration
                     }
+                });
+
+                var toggle_pwd = tempDiv.querySelector('#togglePwd');
+                var password = tempDiv.querySelector('#password_field');
+                toggle_pwd.addEventListener('click', function(event){
+                    password.type = this.checked ? 'text' : 'password';
                 });
 
                 // Add the login form and overlay to the current page

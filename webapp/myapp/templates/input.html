@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Truth Tracker | Input{% endblock %}
+{% block title %}Input | Truth Tracker{% endblock %}
 
 <!-- URL	Title	Text	Review Date	Textual Rating	Publisher Site	Publisher Name	Claim Date	Claimant -->
 
@@ -9,18 +9,30 @@
     <button class="smtbtn mx-auto" disabled="true">
         &nbsp;Truth Tracker&nbsp;
     </button>
-    <p class = "prompt"> Enter your text: </p><p class = "imp-prompt">*</p>
-    <div class="info__icon">
+    <p class="prompt main">Enter your text:</p><p class="imp-prompt">*</p>
+    <div class="info__icon" title="Cannot leave blank">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" height="20" fill="none"><path fill="#393a37" d="m12 1.5c-5.79844 0-10.5 4.70156-10.5 10.5 0 5.7984 4.70156 10.5 10.5 10.5 5.7984 0 10.5-4.7016 10.5-10.5 0-5.79844-4.7016-10.5-10.5-10.5zm.75 15.5625c0 .1031-.0844.1875-.1875.1875h-1.125c-.1031 0-.1875-.0844-.1875-.1875v-6.375c0-.1031.0844-.1875.1875-.1875h1.125c.1031 0 .1875.0844.1875.1875zm-.75-8.0625c-.2944-.00601-.5747-.12718-.7808-.3375-.206-.21032-.3215-.49305-.3215-.7875s.1155-.57718.3215-.7875c.2061-.21032.4864-.33149.7808-.3375.2944.00601.5747.12718.7808.3375.206.21032.3215.49305.3215.7875s-.1155.57718-.3215.7875c-.2061.21032-.4864.33149-.7808.3375z"></path></svg>
     </div>
     <textarea type="text" placeholder="Enter text here" class="edit-text main"></textarea>
-    <p class = "warning">Please enter some text in the above field.</p>
-    <!--------------------------------------------------------------------------------------------->
-    <!-- <p class = "prompt"> Enter your text: </p><p class = "imp-prompt">*</p>
-    <div class="info__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" height="20" fill="none"><path fill="#393a37" d="m12 1.5c-5.79844 0-10.5 4.70156-10.5 10.5 0 5.7984 4.70156 10.5 10.5 10.5 5.7984 0 10.5-4.7016 10.5-10.5 0-5.79844-4.7016-10.5-10.5-10.5zm.75 15.5625c0 .1031-.0844.1875-.1875.1875h-1.125c-.1031 0-.1875-.0844-.1875-.1875v-6.375c0-.1031.0844-.1875.1875-.1875h1.125c.1031 0 .1875.0844.1875.1875zm-.75-8.0625c-.2944-.00601-.5747-.12718-.7808-.3375-.206-.21032-.3215-.49305-.3215-.7875s.1155-.57718.3215-.7875c.2061-.21032.4864-.33149.7808-.3375.2944.00601.5747.12718.7808.3375.206.21032.3215.49305.3215.7875s-.1155.57718-.3215.7875c-.2061.21032-.4864.33149-.7808.3375z"></path></svg>
+    <p class="warning"></p>
+
+    <hr class = "opt-divider">
+    <button class="dropdown-btn" onclick="toggleTextAreas()" title="Show additional fields">▼</button>
+
+    <div id="text-areas" style="display: none;">
+        <p class="prompt">Enter the title of your text:</p><br>
+        <textarea type="text" placeholder="Enter title here" class="edit-text sub" id="title_txt"></textarea><br>
+
+        <p class="prompt">Enter the URL of your text:</p><br>
+        <textarea type="text" placeholder="Enter URL here" class="edit-text sub" id="url_txt"></textarea><br>
+
+        <p class="prompt">Enter the Publisher site of your text:</p><br>
+        <textarea type="text" placeholder="Enter Publisher site here" class="edit-text date" id="publisher_txt"></textarea><br>
+
+        <p class="prompt">Enter the claim date of your text:</p><br>
+        <textarea type="text" placeholder="Enter claim date here (format: 'Month, Day, Year')" class="edit-text sub date" id="date_txt"></textarea><br>
     </div>
-    <textarea type="text" placeholder="Enter text here" class="edit-text main "></textarea> -->
+    <br>
     <button class="btn3 mx-auto">
         Check that fact
     </button>
@@ -28,40 +40,89 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // $(document).ready(function() {
-    //     $(".tbutton").hover(function() {
-    //         $(this).toggleClass("hovered"); 
-    //         $(this).addClass("hovered");
-    //         $(this).find(".hover-text").toggleClass("permanent");
-    //     });
-    // });
+    // JavaScript function to toggle visibility of text areas
+    function toggleTextAreas() {
+        var textAreas = document.getElementById("text-areas");
+        if (textAreas.style.display === "none") {
+            textAreas.style.display = "block";
+        } else {
+            textAreas.style.display = "none";
+        }
+    }
+    // JavaScript function to toggle the clicked class on the button and change the tooltip text
+    function toggleClicked() {
+        var btn = document.querySelector('.dropdown-btn');
+        var isClicked = btn.classList.contains('clicked');
 
-    // // Function to navigate to another page after 3 seconds
-    // function navigateToPage() {
-    //         setTimeout(function() {
-    //             window.location.href = 'your_page.html'; // Change 'your_page.html' to the URL of the page you want to navigate to
-    //         }, 3000); // Wait for 3 seconds (3000 milliseconds)
-    // }
-
-    // // Attach click event listener to the button
-    // document.getElementById('start_btn').addEventListener('click', function() {
-    //     navigateToPage(); // Call the function to navigate to the page
-    // });
+        if (isClicked) {
+            btn.setAttribute("title", "Show additional fields");
+        } else {
+            btn.setAttribute("title", "Hide additional fields");
+        }
+    }
+    // Add event listener to the button to toggle the clicked class and change the tooltip text
+    document.querySelector('.dropdown-btn').addEventListener('click', function() {
+        toggleClicked();
+        this.classList.toggle('clicked');
+    });
+    ////////////////////// Navigation functionality //////////////////////
     $(document).ready(function() {
-            $('.btn3').on('click', function() {
-                var text = $('.edit-text.main').val();
+        $('.btn3').on('click', function() {
+            var text = $('.edit-text.main').val();
+            var title = $('#title_txt').val();
+            var url = $('#url_txt').val();
+            var publisher_site = $('#publisher_txt').val();
+            var claim_date = $('#date_txt').val();
+
+            // Check if the main text area is empty
+            if (text.trim() === '') {
+                $('.warning').text('Please enter some text in the above field.').css('display', 'block');
+            } else {
+                // Send an AJAX request to the server to validate the text length
                 $.ajax({
                     type: 'POST',
-                    url: '/process-text/',  // URL to your Django view function
-                    data: {
-                        'text_input': text
-                    },
+                    url: '/validate_text/',
+                    data: {'text': text},
                     success: function(response) {
-                        console.log(response.result);  // Display the result in the console
-                    }
+                        if (!response.is_valid_length) {
+                            $('.warning').text('Please provide a longer input.').css('display', 'block');
+                        } else if (response.is_gibberish) {
+                            $('.warning').text('Your text seems like gibberish. Try again.').css('display', 'block');
+                        } else {
+                            $('.warning').css('display', 'none'); // Hide the warning message
+                            $(".loader-container").show(); // Show the loader when the button is clicked
+                            window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth' // This enables smooth scrolling
+                            });
+                            $.ajax({
+                                type: 'POST',
+                                url: '/process-text/',  
+                                data: {
+                                    'text_input': text,
+                                    'title': title,
+                                    'url': url,
+                                    'publisher_site': publisher_site,
+                                    'claim_date': claim_date
+                                },
+                                success: function(response) { // Handle success response
+                                    window.location.href = '/results/?text=' + text + '&result=' + response.result
+                                        + '&sentiment=' + response.sentiment + '&sentiment_score=' + response.sentiment_score
+                                        + '&personal=' + response.personal_classification + '&entities=' + response.entities
+                                        + '&ranked_entities=' + response.ranked_entities + '&ensemble_result=' + response.ensemble_result
+                                        + '&multiple_classification=' + response.multiple_classification + '&trustworthiness='
+                                        + response.trustworthiness + '&outdated_warning=' + response.outdated_warning;
+                                }
+                            });
+                        }
+                        // Hide the warning message after 10 seconds
+                        setTimeout(function() {
+                                $('.warning').css('display', 'none');
+                            }, 25000);
+                        }
                 });
-            });
+            }
         });
-
+    });
 </script>
 {% endblock %}

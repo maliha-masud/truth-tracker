@@ -12,8 +12,10 @@
     color: white;
     margin-left: 90px;
     display: inline;
+}
 
-    animation: fadeIn 2.2s ease-in-out;
+.prompt.main{
+  animation: fadeIn 2.2s ease-in-out;
 }
 
 .imp-prompt {
@@ -22,32 +24,113 @@
     color: red;
 
     animation: fadeIn 2.2s ease-in-out;
+    margin-left: 2px;
 }
 
 .info__icon {
-    display: inline;
-    margin-left: 765px;
+  display: inline;
+  margin-left: 768px;
+  position: relative; /* Add relative positioning to the parent */
 
-    animation: fadeIn 2.2s ease-in-out;
+  animation: fadeIn 2.2s ease-in-out;
 }
 
 .info__icon path {
   fill: #ffffff;
 }
 
-.edit-text.main{
-    margin-top: 5px;
-    margin-left: 90px;
-    width: 900px;
-    height: 255px; 
-    
-    padding: 10px;
-    border: 1px solid #000;
-    background-color: white;
-    color: rgb(72, 69, 69);
-    font-size: 14.5px;
+.info__icon:hover::after {
+  content: ""; /* Empty content for the triangle */
+  position: absolute; /* Position the triangle relative to the tooltip */
+  left: -5%; /* Center the triangle horizontally */
+  transform: translateX(-47%); /* Center the triangle horizontally */
+  border-width: 6.5px; /* Size of the triangle */
+  top: -5px;
+  scale: -1;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent; /* Color of the triangle */
+  z-index: 1; /* Ensure the triangle appears above other elements */
+}
 
-    animation: fadeIn 2.2s ease-in-out;
+.info__icon:hover::before {
+  content: "Cannot leave blank"; /* Tooltip text */
+  background-color: rgba(0, 0, 0, 0.8); /* Tooltip background color */
+  color: white; /* Tooltip text color */
+  padding: 3px 5px; /* Padding for the tooltip */
+  border-radius: 5px; /* Rounded corners for the tooltip */
+  position: absolute; /* Position the tooltip relative to its parent */
+  bottom: calc(100% + 3px); /* Position the tooltip above the icon */
+  width: 124px;
+  left: 50%; /* Center the tooltip horizontally */
+  transform: translateX(-50%); /* Center the tooltip horizontally */
+  z-index: 1; /* Ensure the tooltip appears above other elements */
+  font-size: 13.5px;
+}
+.opt-divider {
+  background-color: rgb(235, 231, 231);
+  width: 900px;
+  margin-bottom: -4px;
+}
+
+.dropdown-btn {
+  position: relative;
+  background-color: transparent;
+  color: white;
+  font-size: 12.5px;
+  border: none;
+  cursor: pointer;
+
+  margin-left: 970px;
+}
+/* Tooltip */
+.dropdown-btn:hover::after {
+  content: ""; /* Empty content */
+  position: absolute;
+  top: calc(100% + 2px); /* Position the arrow at the bottom edge of the tooltip */
+  left: 12%; /* Center the arrow horizontally */
+  transform: translateX(-50%); /* Center the arrow horizontally */
+  border-style: solid;
+  border-width: 5px 5px 0; /* Create a triangle shape for the arrow */
+  border-color: rgba(0, 0, 0, 0.8) transparent transparent; /* Match the tooltip background color */
+  scale: -1;
+}
+.dropdown-btn:hover::before {
+  content: attr(title); /* Use the title attribute as the content for the tooltip */
+  background-color: rgba(0, 0, 0, 0.8); /* Tooltip background color */
+  color: white; /* Tooltip text color */
+  padding: 5px 10px; /* Padding for the tooltip */
+  border-radius: 5px; /* Rounded corners for the tooltip */
+  position: absolute; /* Position the tooltip relative to its parent */
+  top: calc(100% + 5px); /* Position the tooltip below the button */
+  width: 150px;
+  left: 50%; /* Center the tooltip horizontally */
+  transform: translateX(-50%); /* Center the tooltip horizontally */
+  z-index: 1; /* Ensure the tooltip appears above other elements */
+}
+
+.edit-text{
+  margin-top: 5px;
+  margin-left: 90px;
+
+  padding: 10px;
+  border: 1px solid #000;
+  background-color: white;
+  color: rgb(72, 69, 69);
+  font-size: 14.5px;
+}
+
+.edit-text.sub{
+  width: 600px;
+  height: 90px; 
+}
+.edit-text.main{
+  width: 900px;
+  height: 245px; 
+  animation: fadeIn 2.2s ease-in-out;
+}
+.edit-text.date{
+  width: 350px;
+  height: 48px; 
 }
 
 .edit-text::placeholder {
@@ -55,7 +138,7 @@
 }
 
 .warning{
-    color: rgb(227, 82, 82);
+    color: red;
     margin-left: 90px;
     display: none;
     /* position: absolute;
@@ -65,10 +148,10 @@
 
 /****************/
 .btn3 {
-  color: purple;
+  color: rgb(255, 195, 255);
   text-transform: uppercase;
   text-decoration: none;
-  border: 2px solid purple;
+  border: 2px solid rgb(255, 195, 255);
   padding: 10px 20px;
   font-size: 17px;
   font-weight: bold;
@@ -82,7 +165,8 @@
 }
 
 .btn3:hover {
-  color: white;
+  /* color: white; */
+  color: purple;
 }
 
 .btn3::before {
@@ -93,7 +177,7 @@
   top: 0;
   left: -40px;
   transform: skewX(45deg);
-  background-color: purple;
+  background-color: rgb(255, 195, 255);
   z-index: -1;
   transition: all 1s;
 }

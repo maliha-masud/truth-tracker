@@ -132,7 +132,7 @@
 
     font-size: 0.685rem;
     
-    margin-top: -6px;
+    margin-top: -0.5px;
     margin-right: 18.5px;
 
     align-items: end;
@@ -206,3 +206,60 @@
    padding: 0 .2em;
    color: #2196f3;
   }
+
+/******************* EYE **********************/
+/*------ Settings ------*/
+.pwd-container {
+  --color: #a5a5b0;
+  --size: 15.5px;
+  display: inline-flex;
+  /* justify-content: center; */
+  margin-left: 25.05rem; margin-top: -2.38rem;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  fill: var(--color);
+}
+
+.pwd-container .eye {
+  position: absolute;
+  animation: keyframes-fill .5s;
+}
+
+.pwd-container .eye-slash {
+  position: absolute;
+  animation: keyframes-fill .5s;
+  display: none;
+}
+
+/* ------ On check event ------ */
+.pwd-container input:checked ~ .eye {
+  display: none;
+}
+
+.pwd-container input:checked ~ .eye-slash {
+  display: inline-block;
+}
+
+/* ------ Hide the default checkbox ------ */
+.pwd-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
