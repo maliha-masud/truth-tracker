@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Truth Tracker | User Manual{% endblock %}
+
+{% block content %}
+
+<button class="smtbtn mx-auto" disabled="true">
+    &nbsp;User Manual&nbsp;
+</button>
+
+<div class="manual">
+    <h1><strong>General Information</strong></h1>
+    <h2><strong>System Overview</strong></h2>
+    <p>Truth Tracker is an AI-based detection system designed to identify and combat misinformation, fake news, and disinformation across various online platforms.</p>
+    <h1><strong>System Summary</strong></h1>
+    <p> Truth Tracker operates on various devices with internet connectivity. It is accessible through web browsers on desktop computers, laptops, tablets, and smartphones with internet access.</p>
+    <p><strong>Browser Compatibility:</strong> Truth Tracker is compatible with all major web browsers, including Google Chrome, Mozilla Firefox, Safari, Microsoft Edge, and Opera.</p>  
+    <p><strong>Internet Connectivity:</strong> The application requires a stable internet connection to perform analysis tasks and retrieve updated information.</p>
+    <p><strong>Installation:</strong> Truth Tracker is a web-based application and does not require installation. Users can access it directly through their web browser by visiting the Truth Tracker website.</p>
+    <!--<p><strong> Device Compatibility:</strong> Truth Tracker is designed to be responsive and compatible with a wide range of devices, including desktop computers, laptops, tablets, and smartphones.</p>-->
+    <p><strong>Minimum System Requirements:</strong> There are no specific minimum system requirements for accessing Truth Tracker. However, a modern web browser and a stable internet connection are recommended for optimal performance.</p>
+    <p><strong>Usage:</strong> After accessing the Truth Tracker website, users can input text snippets for analysis. The results will be displayed directly within the web browser interface.</p>
+    <p><strong>No Further Configuration Required:</strong> Truth Tracker does not require any additional configuration or setup after accessing the website. Users can immediately start using the application to analyze information and identify misinformation.</p>
+    <p><strong>Data Privacy:</strong> Truth Tracker prioritizes user privacy and data security. Personal user data is handled in accordance with privacy regulations and best practices.</p>
+    <h1><strong>User Access Levels</strong></h1>
+    <p>Everyone can use application, but registered users are able to view detailed classification information and track their search history.</p> 
+    <p>Admins are able to view search history and site traffic.</p>
+    <h1><strong>App Functionality</strong></h1>
+    <p>1. When users first open the application, they will arrive at the landing page.</p>
+    <p>2. After clicking the "Get Started" button, user have to option to login/signup or continue without logging in.</p>
+    <p>3. User can enter news text in the text field and also fill additional fields for detailed classification results.</p>
+    <p>4. After clicking "Check That Fact" button, users will be able to view classification results.</p>
+
+
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".loader-container").hide(); // Hide the loader initially
+        });
+    </script>
+{% endblock %}
