@@ -1,0 +1,36 @@
+h2 {
+    font-size: 20px;
+    font-family: 'Helvetica';
+    font-weight: 400;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow with offset (2px, 2px), blur radius (4px), and color */
+}
+
+h1 {
+    font-family: 'Helvetica';
+    font-size: 30px;
+    line-height: 98px;
+    font-weight: 400;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow with offset (2px, 2px), blur radius (4px), and color */
+}
+
+p {
+    font-family: 'Helvetica';
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: -0.20px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Shadow with offset (1px, 1px), blur radius (2px), and color */
+}
+
+.manual {
+    width: 1000px;
+    background: #a94ce6;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 0.5vmin solid #05060f;
+    box-shadow: 0.4rem 0.4rem #05060f;
+    overflow: hidden;
+    margin: 0 auto;
+}
