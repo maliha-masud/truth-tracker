@@ -21,6 +21,7 @@
     <link href="{% static 'signin.css' %}" rel="stylesheet"/>
     <link href="{% static 'project_overview.css' %}" rel="stylesheet"/>
     <link href="{% static 'faq.css' %}" rel="stylesheet"/>
+    <link href="{% static 'user_manual.css' %}" rel="stylesheet"/>
 	<link href="{% static 'output.css' %}" rel="stylesheet"/>
 </head>
 
@@ -77,7 +78,7 @@
                 </button>
                 <br>
                 <button>
-                    <a href="#" class="btn2"><span class="spn2">User Manual</span></a>
+                    <a href="user-manual/" class="btn2" id="user-manual"><span class="spn2">User Manual</span></a>
                 </button>
                 <br>
                 <button>
@@ -174,6 +175,15 @@
                 behavior: 'smooth' // This enables smooth scrolling
             })
         });
+
+        $("#user-manual").click(function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            animateAndNavigate("user-manual", "/user-manual/");
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // This enables smooth scrolling
+            })
+        });    
         $("#faq").click(function(event) {
             event.preventDefault(); // Prevent default link behavior
             animateAndNavigate("faq", "/faq/");
