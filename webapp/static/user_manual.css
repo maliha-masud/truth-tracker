@@ -1,4 +1,4 @@
-h2 {
+.user-manualh2{
     font-size: 20px;
     font-family: 'Helvetica';
     font-weight: 400;
@@ -6,7 +6,7 @@ h2 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow with offset (2px, 2px), blur radius (4px), and color */
 }
 
-h1 {
+.user-manualh1{
     font-family: 'Helvetica';
     font-size: 30px;
     line-height: 98px;
@@ -15,7 +15,7 @@ h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow with offset (2px, 2px), blur radius (4px), and color */
 }
 
-p {
+.user-manualp{
     font-family: 'Helvetica';
     font-size: 19px;
     font-weight: 400;
@@ -33,4 +33,6 @@ p {
     box-shadow: 0.4rem 0.4rem #05060f;
     overflow: hidden;
     margin: 0 auto;
+    margin-top: 20px;
+    animation: fadeIn 2s ease forwards;
 }

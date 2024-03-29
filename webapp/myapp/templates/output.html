@@ -33,7 +33,7 @@
         <p class = "results classification">Result from voting system: {{ result }}</p>
         <p class = "results classification">Ensemble Result: {{ ensemble_result }}</p>
         {% if trustworthiness %}
-            <p class = "results classification">Multiple fields - classification: {{ multiple_classification }}</p>
+            <p class = "results classification">Multiple fields - classification: {{ ensemble_result }}</p> <!-- multiple_classification -->
         {% else %}
             <p class = "results classification">Multiple fields - classification: N/A</p>
         {% endif %}
@@ -85,9 +85,9 @@
         <p class="results" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
             Multiple fields - trustworthiness: {{ trustworthiness }}
         </p>
-        <p class="results" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
+        <!-- <p class="results" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
             Multiple fields - outdated_warning: {{ outdated_warning }}
-        </p><br>
+        </p><br> -->
     {% endif %}
     <!-- <p class="results">News: {{ is_news }} Score: {{ news_score }} </p> -->
     <!--  -->

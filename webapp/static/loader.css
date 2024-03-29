@@ -17,6 +17,7 @@
     align-items: center;
 
     background-color: rgba(0, 0, 0, 0.5); /* Faded black overlay */
+    backdrop-filter: blur(4px); /* Add a blur effect to the overlay */
 }
 
 /* Loader */
@@ -41,6 +42,8 @@
     font-size: .8rem;
     letter-spacing: 1px;
     animation: text-animation 3.5s ease both infinite;
+
+    white-space: nowrap;
 
     margin-left: -40px;
     display: flex;

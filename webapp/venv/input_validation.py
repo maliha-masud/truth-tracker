@@ -2,11 +2,11 @@ import re
 
 def is_gibberish(text):
     # Check for long strings of numbers or letters
-    if re.search(r'\b(\w{15,}|[0-9]{15,})\b', text):  # Increased threshold for long strings
+    if re.search(r'\b(\w{15,}|[0-9]{15,})\b', text):
         return True
 
     # Check for repetitive characters (e.g., "aaaaaa")
-    if re.search(r'(.)\1{5,}', text):  # Increased repetition threshold
+    if re.search(r'(.)\1{5,}', text):
         return True
 
     # Check for common keyboard sequences (e.g., "qwerty")

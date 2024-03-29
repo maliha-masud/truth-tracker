@@ -20,17 +20,27 @@
     <button class="dropdown-btn" onclick="toggleTextAreas()" title="Show additional fields">▼</button>
 
     <div id="text-areas" style="display: none;">
-        <p class="prompt">Enter the title of your text:</p><br>
-        <textarea type="text" placeholder="Enter title here" class="edit-text sub" id="title_txt"></textarea><br>
-
-        <p class="prompt">Enter the URL of your text:</p><br>
-        <textarea type="text" placeholder="Enter URL here" class="edit-text sub" id="url_txt"></textarea><br>
-
-        <p class="prompt">Enter the Publisher site of your text:</p><br>
-        <textarea type="text" placeholder="Enter Publisher site here" class="edit-text date" id="publisher_txt"></textarea><br>
-
-        <p class="prompt">Enter the claim date of your text:</p><br>
-        <textarea type="text" placeholder="Enter claim date here (format: 'Month, Day, Year')" class="edit-text sub date" id="date_txt"></textarea><br>
+        <div class="split-container mx-auto">
+            <div class="left-pane">
+                <p class="prompt sub">Title of your text (e.g. Article name):</p><br>
+                <textarea type="text" placeholder="Enter title here" class="edit-text sub" id="title_txt"></textarea><br>
+            </div>
+            <div class="right-pane">
+                <p class="prompt sub">URL your text generates from:</p><br>
+                <textarea type="text" placeholder="Enter URL here" class="edit-text sub" id="url_txt"></textarea><br>
+            </div>
+        </div>
+        <div class="split-container mx-auto">
+            <div class="left-pane">
+                <p class="prompt sub">Publisher Site of your text:</p><br>
+                <textarea type="text" placeholder="Enter Publisher site here" class="edit-text sub" id="publisher_txt"></textarea><br>
+            </div>
+            <div class="right-pane">
+                
+        <p class="prompt sub">Claim date of your text:</p><br>
+        <textarea type="text" placeholder="Enter claim date here (format: 'Month, Day, Year')" class="edit-text sub" id="date_txt"></textarea><br>
+            </div>
+        </div>
     </div>
     <br>
     <button class="btn3 mx-auto">
@@ -56,8 +66,10 @@
 
         if (isClicked) {
             btn.setAttribute("title", "Show additional fields");
+            // btn.style.transform = "rotateX(0deg)";
         } else {
             btn.setAttribute("title", "Hide additional fields");
+            // btn.style.transform = "rotateX(180deg)";
         }
     }
     // Add event listener to the button to toggle the clicked class and change the tooltip text
@@ -91,10 +103,14 @@
                         } else {
                             $('.warning').css('display', 'none'); // Hide the warning message
                             $(".loader-container").show(); // Show the loader when the button is clicked
-                            window.scrollTo({
-                                top: 0,
-                                behavior: 'smooth' // This enables smooth scrolling
+                                window.scrollTo({
+                                    top: 0,
+                                    behavior: 'smooth' // This enables smooth scrolling
                             });
+                            // Start a timer to change loader text after 10 seconds
+                            var timer = setTimeout(function() {
+                                $('.loader-text').text('Just a few more seconds...');
+                            }, 9000);
                             $.ajax({
                                 type: 'POST',
                                 url: '/process-text/',  
