@@ -184,7 +184,7 @@ Here are some related projects:
 - [Improving Fake News Detection of Influential Domain via Domain- and Instance-Level Transfer](https://aclanthology.org/2022.coling-1.250/)
 - [Litrl Browser](https://github.com/litrl/litrl_code)
 ## Appendix
-Color Reference:
+### Color Reference:
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
