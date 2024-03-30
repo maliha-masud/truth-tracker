@@ -124,16 +124,16 @@ Activate venv
   venv/Scripts/activate
 ```
 
+Make the required changes in the following files:
+- `webapp/myapp/management/commands/preload.py`
+- `webapp/venv/pyenv.confg`
+- `webapp/myapp/views.py`
+
 Run the batch file that runs the app
 
 ```bash
   .\run_server.bat
 ```
-
-Make the required changes in the following files:
-- `webapp/myapp/management/commands/preload.py`
-- `webapp/venv/pyenv.confg`
-- `webapp/myapp/views.py`
 
 ##
 
