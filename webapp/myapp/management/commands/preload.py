@@ -6,7 +6,7 @@ file_path = 'pakistani_dataset_consolidated_augmented.xlsx'
 dataset = pd.read_excel(file_path)
 
 import sys
-sys.path.append('D:\\My Stuff\\UNI\\8th Semester\\FYP-II\\webapp\\webapp\\venv')
+sys.path.append('{path to your venv e.g. D:\webapp\venv}')
 import about_dataset  # Import the entire python file
 import votingsystem  # Import the entire python file
 import ensemble_classifier  # Import the entire python file

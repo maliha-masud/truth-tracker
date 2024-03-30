@@ -3,10 +3,9 @@ from django.http import JsonResponse
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 import json
-import pyrebase
 
 import sys
-sys.path.append('D:\\My Stuff\\UNI\\8th Semester\\FYP-II\\webapp\\webapp\\venv')
+sys.path.append('{path to your venv e.g. D:\webapp\venv}')
 from votingsystem import votingsystem
 from ensemble_classifier import ensemble_classifier
 from about_dataset import cols_dataset, visualize_dataset
@@ -15,19 +14,6 @@ from ner import ner
 from multiple_inputs import multiple_inputs
 from input_validation import is_gibberish, length_validation
 # from news_classifier import classify_as_news
-
-config = {
-    "apiKey": "AIzaSyDA1e0JbHwZ5-5zoSf91DZCa-Run0XeHY8",
-    "authDomain": "fyp-db-28850.firebaseapp.com",
-    "databaseURL": "https://fyp-db-28850-default-rtdb.firebaseio.com",
-    "projectId": "fyp-db-28850",
-    "storageBucket": "fyp-db-28850.appspot.com",
-    "messagingSenderId": "32336283099",
-    "appId": "1:32336283099:web:a976a9efdef74a3b4353fe",
-}
-firebase = pyrebase.initialize_app(config)
-authe = firebase.auth()
-database = firebase.database()
 
 # Create your views here.
 def home(request):
