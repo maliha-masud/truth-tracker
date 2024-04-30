@@ -12,7 +12,7 @@ from about_dataset import cols_dataset, visualize_dataset
 from sentiment_analysis import sentiment_analysis, classify_personal_statement
 from ner import ner
 from multiple_inputs import multiple_inputs
-from input_validation import is_gibberish, length_validation
+from input_validation import is_gibberish, length_validation, language_detection
 # from news_classifier import classify_as_news
 
 # Create your views here.
@@ -84,6 +84,8 @@ def validate_text(request):
         if length_validation_result:
             is_gibberish_result = is_gibberish(text)
             response_data['is_gibberish'] = is_gibberish_result
+            lang_detected = language_detection(text)
+            response_data['lang_detected'] = lang_detected
         
         return JsonResponse(response_data)
     else:

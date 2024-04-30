@@ -1,4 +1,5 @@
 import re
+from langdetect import detect
 
 def is_gibberish(text):
     # Check for long strings of numbers or letters
@@ -30,6 +31,15 @@ def length_validation(text):
         return True
     else:
         return False
+
+
+def language_detection(text):
+    language = detect(text)
+    return language
+
+# # Example usage:
+# text = "What would i know?"
+# print(language_detection(text)) #en
 
 # # Example usage
 # input_text = input("Enter text to validate: ")

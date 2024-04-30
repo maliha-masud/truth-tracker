@@ -107,6 +107,8 @@
                             $('.warning').text('Please provide a longer input.').css('display', 'block');
                         } else if (response.is_gibberish) {
                             $('.warning').text('Your text seems like gibberish. Try again.').css('display', 'block');
+                        } else if (response.lang_detected != "en" && response.lang_detected != "ur") {
+                            $('.warning').text('Please enter either English or Urdu text.').css('display', 'block');
                         } else {
                             $('.warning').css('display', 'none'); // Hide the warning message
                             $(".loader-container").show(); // Show the loader when the button is clicked
