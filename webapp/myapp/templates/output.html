@@ -49,7 +49,7 @@
         </div>
         <br> <div class="loader-shape-3" id="loader-ensemble"></div>
     </div>
-    <br>
+    <br><br>
     <header class="big" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
         Sentiment Analysis:
     </header>
@@ -70,20 +70,18 @@
         </div>
         <br> <div class="loader-shape-3" id="loader-sentiment"></div>
     </div>
-    <br>
+    <br><br>
     {% if ranked_entities|length > 2 %}
         <header class="big" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
             Named Entities:
         </header>
-        <div id="ranked-buttons" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
+        <div id="ranked-buttons" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s; margin-bottom: -50px;">
         </div>
         <br>
-    <!-- {% else % -->
-        <!-- Render content when ranked_entities is empty -->
     {% endif %}
     {% if trustworthiness %}
         <p class="results" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
-            Multiple fields - trustworthiness: {{ trustworthiness }}
+            Source trustworthiness: {{ trustworthiness }}
         </p>
         <!-- <p class="results" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;">
             Multiple fields - outdated_warning: {{ outdated_warning }}

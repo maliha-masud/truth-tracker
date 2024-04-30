@@ -61,11 +61,62 @@
   --scale-bar: 0;
   --rotate-bar-one: 45deg;
   --rotate-bar-three: -45deg;
+  z-index: 1002;
 }
 /* FIN ICON-MENU */
 
-/**********************/
+.overlay-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  z-index: 999; /* Ensure the overlay is beneath the menu */
+}
 
+/* Show the overlay when the checkbox is checked */
+.check-icon:checked + .icon-menu ~ #overlay-menu-overlay {
+  display: block;
+}
+
+.overlay-menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 27%; /* Adjust width as needed */
+  height: 163vh;
+  background-color: black;
+  z-index: 1000; /* Ensure the overlay is above other content */
+}
+
+/* Show the overlay menu when the checkbox is checked */
+.check-icon:checked + .icon-menu ~ #overlay-menu {
+  display: block;
+}
+
+/* Style your menu items within the overlay menu */
+.overlay-menu-content {
+  padding-left: 20px; /* Add padding to the menu content */
+  margin-top: -10px;
+  color: white; /* Adjust text color*/
+}
+
+.overlay-menu-content.first {
+  margin-top: 76px;
+}
+
+/* Hover effect for menu content when the menu is visible */
+.check-icon:checked + .icon-menu ~ #overlay-menu .overlay-menu-content:hover {
+  background-color: #4f4f4f;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  cursor: pointer;
+}
+
+/**********************/
 .box {
     width: auto;
     height: auto;
@@ -173,8 +224,14 @@
 
 .btn2:hover {
   color: #ffffff;
-  
   text-decoration: none;
+}
+
+.btn2.about::before {
+  transition: none;
+}
+.btn2.about:hover::before {
+  width: 0%; transition: none;
 }
 
 button {

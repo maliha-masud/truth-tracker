@@ -69,10 +69,15 @@
   z-index: 1; /* Ensure the tooltip appears above other elements */
   font-size: 13.5px;
 }
+.opt-divider-container {
+  display: flex;
+  align-items: center;
+}
 .opt-divider {
   background-color: rgb(235, 231, 231);
-  width: 900px;
-  margin-bottom: -4px;
+  width: 682px;
+  margin-bottom: 2px; /* Adjust as needed */
+  margin-left: 5px;
 }
 
 .dropdown-btn {
@@ -82,7 +87,6 @@
   font-size: 12.5px;
   border: none;
   cursor: pointer;
-
   margin-left: 970px;
 }
 /* Tooltip */
@@ -178,7 +182,7 @@
   transition: all 1s;
   overflow: hidden;
 
-  margin-top: 25px;
+  margin-top: 25px; margin-bottom: -50px;
   left: 42%;
 }
 
