@@ -123,7 +123,7 @@ Run the command to start the app
   python manage.py startapp myapp
 ```
 
-Clone the project, and copy the webapp folder (truth-tracker/webapp) into your Django project
+Clone this project separately, and copy the webapp folder (truth-tracker/webapp) into your Django project
 
 ```bash
   git clone https://github.com/maliha-masud/truth-tracker
@@ -139,6 +139,13 @@ Make the required changes in the following files:
 - `webapp/myapp/management/commands/preload.py`
 - `webapp/venv/pyenv.confg`
 - `webapp/myapp/views.py`
+
+Install dependencies listed in `requirements.txt` into your local Python interpreter
+
+```bash
+  pip install -r requirements.txt
+```
+- May need to do manually
 
 Activate venv
 
