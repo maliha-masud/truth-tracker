@@ -99,19 +99,19 @@ Create a folder for the project, and navigate into it
 
 #### Web app
 
-Install django
+Install Django
 
 ```bash
   pip install django
 ```
 
-Start the django project
+Start the Django project
 
 ```bash
   django-admin startproject project_name
 ```
 
-Navigate into the created django project
+Navigate into the created Django project
 
 ```bash
   cd project_name
@@ -123,43 +123,28 @@ Run the command to start the app
   python manage.py startapp myapp
 ```
 
-In project_name → settings.py, write the name of your new app in INSTALLED_APPS
-![image](https://github.com/maliha-masud/truth-tracker/assets/121713404/58a7232d-24cc-47bd-891a-9267b9f7278f)
-
-Clone the project
+Clone the project, and copy the webapp folder (truth-tracker/webapp) into your Django project
 
 ```bash
   git clone https://github.com/maliha-masud/truth-tracker
 ```
 
-Go to the project directory
-
-```bash
-  cd truth-tracker
-```
-
-Install dependencies
-
-```bash
-  pip install -r requirements.txt
-```
-
-Navigate to the web app
+Navigate to webapp (in your Django project)
 
 ```bash
   cd webapp
-```
-
-Activate venv
-
-```bash
-  venv/Scripts/activate
 ```
 
 Make the required changes in the following files:
 - `webapp/myapp/management/commands/preload.py`
 - `webapp/venv/pyenv.confg`
 - `webapp/myapp/views.py`
+
+Activate venv
+
+```bash
+  venv/Scripts/activate
+```
 
 Run the batch file that runs the app
 
