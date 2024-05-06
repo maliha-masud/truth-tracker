@@ -92,7 +92,39 @@ The dataset is created by scraping the web, the analysis of text is done using e
 
 ## Run Locally
 
-### Web app
+Create a folder for the project, and navigate into it
+```bash
+  cd project_name
+```
+
+#### Web app
+
+Install django
+
+```bash
+  pip install django
+```
+
+Start the django project
+
+```bash
+  django-admin startproject project_name
+```
+
+Navigate into the created django project
+
+```bash
+  cd project_name
+```
+
+Run the command to start the app
+
+```bash
+  python manage.py startapp myapp
+```
+
+In project_name → settings.py, write the name of your new app in INSTALLED_APPS
+![image](https://github.com/maliha-masud/truth-tracker/assets/121713404/58a7232d-24cc-47bd-891a-9267b9f7278f)
 
 Clone the project
 
