@@ -44,8 +44,8 @@
                 </p></a><br>
             </div>
         <div class="overlay-menu-overlay" id="overlay-menu-overlay"></div>
-        <a class="navbar-brand" href="#">
-            <button class = "nbutton">
+        <a class="navbar-brand" href="">
+            <button class = "nbutton" id="nbutton">
                 <span class="box">
                     Truth Tracker
                 </span>
@@ -141,12 +141,10 @@
                     </a>
                 </button>
                 <br>
-                <!-- <button>
-                    <a href="#" class="btn2"><span class="spn2">Image Classification</span></a>
-                </button>
-                <br> -->
                 <button>
-                    <a href="#" class="btn2"><span class="spn2">Sentiment Analysis</span></a>
+                    <a href="img-input/" class="btn2" id="img_classification">
+                        <span class="spn2">Image Text Classification</span>
+                    </a>
                 </button>
             </ul>
         </div>
@@ -192,7 +190,6 @@
         });
         //$("#about").click(function() {
         function animateAndNavigate(elementId, destination) {
-            console.log("Button clicked");
             event.preventDefault(); // Prevent default link behavior
             setTimeout(function() {
                 $(".loader-container").show(); // Show the loader when the button is clicked
@@ -201,6 +198,16 @@
                 window.location.href = destination;
             }, 2000);
         }
+
+        $("#nbutton").click(function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            setTimeout(function() {
+                $(".loader-container").show(); // Show the loader when the button is clicked
+            }, 10);
+            setTimeout(function() {
+                window.location.href = "{% url 'home' %}"
+            }, 2000);
+        });
 
         $("#about_btm").click(function(event) {
             event.preventDefault(); // Prevent default link behavior
@@ -243,6 +250,14 @@
         $("#text_classification").click(function(event) {
             event.preventDefault(); // Prevent default link behavior
             animateAndNavigate("input", "/input/");
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // This enables smooth scrolling
+            })
+        });
+        $("#img_classification").click(function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            animateAndNavigate("img_classification", "/img-input/");
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth' // This enables smooth scrolling

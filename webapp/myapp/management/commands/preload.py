@@ -11,6 +11,7 @@ import about_dataset  # Import the entire python file
 import votingsystem  # Import the entire python file
 import ensemble_classifier  # Import the entire python file
 import multiple_inputs
+import trans_ur_to_en
 
 class Command(BaseCommand):
     help = 'Preload additional functions'
@@ -25,4 +26,4 @@ class Command(BaseCommand):
         multiple_inputs.multiple_inputs(text_input, title, URL, publisher_site, claim_date)
         # Indicate successful preloading
         self.stdout.write(self.style.SUCCESS('Additional functions preloaded successfully'))
-
+        

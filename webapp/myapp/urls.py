@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path("", views.home, name = "home"), #call views' home function, allow us to view the HTTP response returned; when empty string path
     path("input/", views.input, name = "input"),
+    path("img-input/", views.img_input, name = "img_input"),
     path("login_form.html", views.login_form, name = "login_form"),
     path("signin/", views.signin, name = "signin_pg"),
     path("about-dataset/", views.about_dataset, name = "about_dataset"),
@@ -13,6 +14,6 @@ urlpatterns = [
     path("faq/", views.faq, name = "faq"),
     
     path('validate_text/', views.validate_text, name='validate_text'),
-
     path('process-text/', views.process_text),
+    path('upload/', views.upload_image, name='upload_image'),
 ]

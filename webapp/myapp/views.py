@@ -3,6 +3,8 @@ from django.http import JsonResponse
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 import json
+from PIL import Image
+import pytesseract
 
 import sys
 sys.path.append('{path to your venv e.g. D:\webapp\venv}')
@@ -13,6 +15,7 @@ from sentiment_analysis import sentiment_analysis, classify_personal_statement
 from ner import ner
 from multiple_inputs import multiple_inputs
 from input_validation import is_gibberish, length_validation, language_detection
+from trans_ur_to_en import translate_and_map_urdu_to_english
 # from news_classifier import classify_as_news
 
 # Create your views here.
@@ -33,6 +36,9 @@ def faq(request):
 
 def input(request):
     return render(request, "input.html")
+    
+def img_input(request):
+    return render(request, "img_input.html")
 
 def output(request):
     text = request.GET.get('text', '')
@@ -62,14 +68,16 @@ import os
 
 def about_dataset(request):
     dataset_stats = cols_dataset()
-    visualize_dataset()  # Call the visualize_dataset function
-    image_path = settings.STATIC_URL + 'lineplot.png' #'webapp/static/lineplot.png' #'lineplot.png'  # Path of the saved image file
 
-    context = {'dataset_stats': dataset_stats, 'image_path': image_path}
-    return render(request, 'about_dataset.html', context) #render the template with the context
-
-def visualize_data(request):
-    return visualize_dataset()
+    context = {
+        'url_stats': dataset_stats[0],
+        'title_stats': dataset_stats[1],
+        'text_stats': dataset_stats[2],
+        'rating_stats': dataset_stats[3],
+        'site_stats': dataset_stats[4],
+        'name_stats': dataset_stats[5]
+    }
+    return render(request, 'about_dataset.html', context)
     
 @csrf_exempt  
 def validate_text(request):
@@ -126,3 +134,31 @@ def process_text(request):
         request.session['trustworthiness'] = trustworthiness
         return JsonResponse(data)
     return JsonResponse({'result': 'Invalid request method.'})
+
+# Ensure pytesseract uses the correct path to the tesseract executable
+pytesseract.pytesseract.tesseract_cmd = r'{path to your tesseract exe e.g. C:\Program Files\Tesseract-OCR\tesseract.exe}'
+def upload_image(request):
+    if request.method == 'POST' and request.FILES['image']:
+        image = request.FILES['image']
+        temp_dir = 'temp'
+        image_path = os.path.join(temp_dir, image.name)
+
+        # Create the temp directory if it doesn't exist
+        if not os.path.exists(temp_dir):
+            os.makedirs(temp_dir)
+
+        # Save the uploaded image to the temporary location
+        with open(image_path, 'wb+') as destination:
+            for chunk in image.chunks():
+                destination.write(chunk)
+
+        # Open the image file and extract text
+        img = Image.open(image_path)
+        extracted_text = pytesseract.image_to_string(img)
+
+        # Delete the temporary image file
+        os.remove(image_path)
+
+        return JsonResponse({'extracted_text': extracted_text})
+
+    return render(request, 'upload.html')

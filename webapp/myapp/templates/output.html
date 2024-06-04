@@ -2,12 +2,10 @@
 
 {% block title %}Results | Truth Tracker{% endblock %}
 
-<!-- URL	Title	Text	Review Date	Textual Rating	Publisher Site	Publisher Name	Claim Date	Claimant -->
-
 {% block content %}
 <div class="container">
     <button class="smtbtn mx-auto" disabled="true">
-        &nbsp;Truth Tracker&nbsp;
+        &nbsp;Classification Results&nbsp;
     </button>
     <div class="my-container mx-auto" style="opacity: 0; animation: fadeIn 1100ms ease forwards; animation-delay: 800ms;"> 
         <div class="my-window"> 
@@ -89,6 +87,14 @@
     {% endif %}
     <!-- <p class="results">News: {{ is_news }} Score: {{ news_score }} </p> -->
     <!--  -->
+    <a href="input/">
+    <div class= "redobtn mx-auto" style="opacity: 0; animation: floatFromBottom 2s ease forwards; animation-delay: 2s;" id="redo_btn">
+        <svg width="28px" height="18px" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: -7px;">
+        <g id="Arrow / Arrow_Undo_Up_Left">
+        <path id="Vector" d="M7 13L3 9M3 9L7 5M3 9H16C18.7614 9 21 11.2386 21 14C21 16.7614 18.7614 19 16 19H11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        </svg>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Redo
+    </div></a>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -166,5 +172,22 @@
         return positionMap[sentiment] || 50; // Default position
     }
 
+    function animateAndNavigate(elementId, destination) {
+        event.preventDefault(); // Prevent default link behavior
+        setTimeout(function() {
+            $(".loader-container").show(); // Show the loader when the button is clicked
+        }, 10);
+        setTimeout(function() {
+            window.location.href = destination;
+        }, 2000);
+    }
+    $("#redo_btn").click(function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        animateAndNavigate("input/", "/input/");
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // This enables smooth scrolling
+        })
+    });
 </script>
 {% endblock %}

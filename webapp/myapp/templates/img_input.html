@@ -1,55 +1,21 @@
 {% extends "base.html" %}
 
-{% block title %}Input | Truth Tracker{% endblock %}
-
-<!-- URL	Title	Text	Review Date	Textual Rating	Publisher Site	Publisher Name	Claim Date	Claimant -->
+{% block title %}Image | Truth Tracker{% endblock %}
 
 {% block content %}
 <div class="container">
     <button class="smtbtn mx-auto" disabled="true">
-        &nbsp;Text Classification&nbsp;
+        &nbsp;Image Text Classification&nbsp;
     </button>
-    <p class="prompt main">Enter your text:</p><p class="imp-prompt">*</p>
-    <div class="info__icon" title="Cannot leave blank">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" height="20" fill="none"><path fill="#393a37" d="m12 1.5c-5.79844 0-10.5 4.70156-10.5 10.5 0 5.7984 4.70156 10.5 10.5 10.5 5.7984 0 10.5-4.7016 10.5-10.5 0-5.79844-4.7016-10.5-10.5-10.5zm.75 15.5625c0 .1031-.0844.1875-.1875.1875h-1.125c-.1031 0-.1875-.0844-.1875-.1875v-6.375c0-.1031.0844-.1875.1875-.1875h1.125c.1031 0 .1875.0844.1875.1875zm-.75-8.0625c-.2944-.00601-.5747-.12718-.7808-.3375-.206-.21032-.3215-.49305-.3215-.7875s.1155-.57718.3215-.7875c.2061-.21032.4864-.33149.7808-.3375.2944.00601.5747.12718.7808.3375.206.21032.3215.49305.3215.7875s-.1155.57718-.3215.7875c-.2061.21032-.4864.33149-.7808.3375z"></path></svg>
-    </div>
-    <textarea type="text" placeholder="Enter text here..." class="edit-text main"></textarea>
+    <br><br>
+    <input type="file" id="image-upload" accept="image/*" style="margin-left: 94px;
+        width: 740px; background-color: rgb(227, 239, 255);">
+    <button class="upload" id="upload-button" style="margin-left: 44px;">Upload</button>
+    <br><br>
+    <p class="prompt main">Your extracted text:</p>
+    <textarea type="text" placeholder="Entered text..." class="edit-text main"
+        style="height: 135px;"></textarea>
     <p class="warning"></p>
-
-    <div class="opt-divider-container" style="margin-bottom: -12px; margin-top: -8px;">
-        <hr class="opt-divider" style="width: 60px; margin-left: 92px;">
-        <header class="big" style="margin-top: 10px; font-size: 19px; margin-left: -83px;">
-          Additional Fields
-        </header>
-        <hr class="opt-divider">
-    </div>
-      
-    <button class="dropdown-btn" onclick="toggleTextAreas()" title="Show additional fields">▼</button>
-
-    <div id="text-areas" style="display: none;">
-        <div class="split-container mx-auto">
-            <div class="left-pane">
-                <p class="prompt sub">Title of your text (e.g. Article name):</p><br>
-                <textarea type="text" placeholder="Enter title here" class="edit-text sub" id="title_txt"></textarea><br>
-            </div>
-            <div class="right-pane">
-                <p class="prompt sub">URL your text generates from:</p><br>
-                <textarea type="text" placeholder="Enter URL here" class="edit-text sub" id="url_txt"></textarea><br>
-            </div>
-        </div>
-        <div class="split-container mx-auto">
-            <div class="left-pane">
-                <p class="prompt sub">Publisher Site of your text:</p><br>
-                <textarea type="text" placeholder="Enter Publisher site here" class="edit-text sub" id="publisher_txt"></textarea><br>
-            </div>
-            <div class="right-pane">
-                
-        <p class="prompt sub">Claim date of your text:</p><br>
-        <textarea type="text" placeholder="Enter claim date here (format: 'Month, Day, Year')" class="edit-text sub" id="date_txt"></textarea><br>
-            </div>
-        </div>
-    </div>
-    <br>
     <button class="btn3 mx-auto">
         Check that fact
     </button>
@@ -57,32 +23,50 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // JavaScript function to toggle visibility of text areas
-    function toggleTextAreas() {
-        var textAreas = document.getElementById("text-areas");
-        if (textAreas.style.display === "none") {
-            textAreas.style.display = "block";
-        } else {
-            textAreas.style.display = "none";
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
         }
+        return cookieValue;
     }
-    // JavaScript function to toggle the clicked class on the button and change the tooltip text
-    function toggleClicked() {
-        var btn = document.querySelector('.dropdown-btn');
-        var isClicked = btn.classList.contains('clicked');
 
-        if (isClicked) {
-            btn.setAttribute("title", "Show additional fields");
-            // btn.style.transform = "rotateX(0deg)";
-        } else {
-            btn.setAttribute("title", "Hide additional fields");
-            // btn.style.transform = "rotateX(180deg)";
-        }
-    }
-    // Add event listener to the button to toggle the clicked class and change the tooltip text
-    document.querySelector('.dropdown-btn').addEventListener('click', function() {
-        toggleClicked();
-        this.classList.toggle('clicked');
+    const csrftoken = getCookie('csrftoken');
+
+    $(document).ready(function() {
+        $('#upload-button').click(function(e) {
+            e.preventDefault();
+            var formData = new FormData();
+            var imageFile = $('#image-upload')[0].files[0];
+            if (!imageFile) {
+                alert("Please select an image file first.");
+                return;
+            }
+
+            formData.append('image', imageFile);
+            formData.append('csrfmiddlewaretoken', csrftoken);
+
+            $.ajax({
+                url: "{% url 'upload_image' %}",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    $('.edit-text.main').val(response.extracted_text);
+                },
+                error: function(xhr, status, error) {
+                    alert("An error occurred: " + error);
+                }
+            });
+        });
     });
     ////////////////////// Navigation functionality //////////////////////
     $(document).ready(function() {
