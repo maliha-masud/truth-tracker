@@ -142,13 +142,13 @@ Run the command to start the app
   python manage.py startapp myapp
 ```
 
-Clone this project separately, and copy the webapp folder (truth-tracker/webapp) into your Django project
+Clone this project separately, and copy the webapp folder's contents (truth-tracker/webapp contents) into the subfolder named as your Django project
 
 ```bash
   git clone https://github.com/maliha-masud/truth-tracker
 ```
 
-Navigate to webapp (in your Django project)
+Navigate to the subfolder named as your Django project
 
 ```bash
   cd webapp
