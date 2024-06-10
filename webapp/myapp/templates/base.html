@@ -22,6 +22,7 @@
     <link href="{% static 'project_overview.css' %}" rel="stylesheet"/>
     <link href="{% static 'faq.css' %}" rel="stylesheet"/>
     <link href="{% static 'user_manual.css' %}" rel="stylesheet"/>
+	<link href="{% static 'contact.css' %}" rel="stylesheet"/>
 	<link href="{% static 'output.css' %}" rel="stylesheet"/>
 </head>
 
@@ -68,7 +69,7 @@
                     <a id="bottom" href="user-manual/">User Manual</a>
                 </div>
                 <button>
-                    <a href="#" class="btn2"><span class="spn2">Contact Us</span></a>
+                    <a href="contact/" class="btn2" id="contact_btn"><span class="spn2">Contact Us</span></a>
                 </button>
                 <button>
                     <a href="signin/" class="btn2" id="login_btn"><span class="spn2">Login/Sign Up</span></a>
@@ -226,6 +227,14 @@
                 behavior: 'smooth' // This enables smooth scrolling
             })
         });
+		$("#contact_btn").click(function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            animateAndNavigate("#contact_btn", "/contact/");
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // This enables smooth scrolling
+            })
+        });
         $("#more_info").click(function(event) {
             event.preventDefault(); // Prevent default link behavior
             animateAndNavigate("#project-overview", "/project-overview/");
@@ -326,29 +335,5 @@
             }
         });
     </script>
-
-<!-- <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyDA1e0JbHwZ5-5zoSf91DZCa-Run0XeHY8",
-      authDomain: "fyp-db-28850.firebaseapp.com",
-      projectId: "fyp-db-28850",
-      storageBucket: "fyp-db-28850.appspot.com",
-      messagingSenderId: "32336283099",
-      appId: "1:32336283099:web:a976a9efdef74a3b4353fe",
-      measurementId: "G-7RTKPQFWJJ"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script> -->
 </body>
 </html>

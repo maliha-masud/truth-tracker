@@ -10,6 +10,7 @@ urlpatterns = [
     path("about-dataset/", views.about_dataset, name = "about_dataset"),
     path("results/", views.output, name = "results"),
     path("project-overview/", views.project_overview, name = "project-overview"),
+    path("contact/", views.contact, name = "contact"),
     path("user-manual/", views.user_manual, name = "user-manual"),
     path("faq/", views.faq, name = "faq"),
     

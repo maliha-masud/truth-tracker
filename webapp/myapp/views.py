@@ -27,6 +27,9 @@ def login_form(request):
 
 def project_overview(request):
     return render(request,"project_overview.html")
+    
+def contact(request):
+    return render(request,"contact.html")
 
 def user_manual(request):
     return render(request,"user_manual.html")
