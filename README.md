@@ -1,4 +1,3 @@
-
 # Truth Tracker
 
 Truth Tracker is a web platform for multi-class categorization of Pakistani news, aiming to apply the concepts of machine learning and NLP to verify news and help users understand what elements contribute to the final rulings.
@@ -7,7 +6,14 @@ Truth Tracker is a web platform for multi-class categorization of Pakistani news
 - Dataset containing texts from Pakistani news and classification labels including true, mostly true, half true, misleading, satire, and false
 - Ensemble classification method employing models of support vector machine, random forest, multinomial NB, and logistic regression
 - NLP methods for sentiment analysis and named entity recognition (NER)
-- Intuitive web app to enter text (and other related data) for instant results. Additionally, learn more about news fabrication, propaganda, and the fight against misinformation.
+- Intuitive web app to enter text (and other related data) for instant results. Additionally, learn more about news fabrication, propaganda, and the fight against misinformation in Pakistan.
+
+<div align="center">
+  <video src="https://github.com/maliha-masud/truth-tracker/assets/121713404/4d6a8ac5-03ee-4e5e-bf16-4f26a1d0232b" controls>
+    Your browser does not support the video tag.
+  </video>
+</div>
+  
 ## Technologies/Libraries
 
 The dataset is created by scraping the web, the analysis of text is done using ensemble machine learning models and NLP techniques, the front end is created using Django, and the chrome extension is created using Flask.
@@ -51,6 +57,11 @@ The dataset is created by scraping the web, the analysis of text is done using e
   <img src="https://github.com/maliha-masud/truth-tracker/assets/121713404/2230dbb4-d002-4f17-bf0b-ab833b16b5c4" alt="logo-Firebase" width="180">
 </p>
 
+**Authentication**: Firebase-Admin
+<p align="center">
+  <img src="https://github.com/maliha-masud/truth-tracker/assets/121713404/4052ec0e-0e4a-4f46-ba12-a0b9ec7f2954" alt="logo-FirebaseAuth" width="180">
+</p>
+
 **Chrome Extension:** Flask
 <p align="center">
   <img src="https://github.com/maliha-masud/truth-tracker/assets/121713404/3542b920-4f46-4803-a6d2-18c2beb95352" alt="logo-flask" width="110">
@@ -62,6 +73,10 @@ The dataset is created by scraping the web, the analysis of text is done using e
   <img src="https://github.com/maliha-masud/truth-tracker/assets/121713404/2766bbf4-50ad-4756-9f47-9d0b1a3eaac8" alt="logo-seaborn" width="140">
 </p>
 
+**Image Character Extraction**: PyTesseract, Tesseract OCR
+<p align="center">
+  <img src="https://github.com/maliha-masud/truth-tracker/assets/121713404/f5cccebf-8270-4e68-a32f-6732f39591d2" alt="tesseract" width="110">
+</p>
 
 <details open>
     <summary><b>&nbsp;Package details</b></summary>
@@ -70,22 +85,26 @@ The dataset is created by scraping the web, the analysis of text is done using e
         <li><b>Requests:</b> Python HTTP for Humans.</li>
         <li><b>Beautiful Soup/bs4:</b> Screen-scraping library</li>
         <li><b>Selenium (webdriver):</b> Automate web browser interaction from Python. Enables programmatically controlling web browsers for testing purposes or web scraping.</li>
-        <li><b>Regular Expressions (Regex):</b> searchable database of regular expressions</li>
-        <li><b>Pandas:</b> Powerful data structures for data analysis, time series, and statistics</li>
-        <li><b>scikit-learn:</b> A set of python modules for machine learning and data mining</li>
+        <li><b>Regular Expressions (Regex):</b> Searchable database of regular expressions.</li>
+        <li><b>Pandas:</b> Powerful data structures for data analysis, time series, and statistics.</li>
+        <li><b>scikit-learn:</b> A set of python modules for machine learning and data mining.</li>
         <li><b>TensorFlow:</b> TensorFlow is an open source machine learning framework for everyone.</li>
-        <li><b>Matplotlib:</b> Python plotting package</li>
-        <li><b>NumPy:</b> Fundamental package for array computing in Python</li>
-        <li><b>spaCy:</b> Industrial-strength Natural Language Processing (NLP) in Python</li>
+        <li><b>Matplotlib:</b> Python plotting package.</li>
+        <li><b>NumPy:</b> Fundamental package for array computing in Python.</li>
+        <li><b>spaCy:</b> Industrial-strength Natural Language Processing (NLP) in Python.</li>
         <li><b>TextBlob:</b> Simple, Pythonic text processing. Sentiment analysis, part-of-speech tagging, noun phrase parsing, and more.</li>
         <li><b>NLTK:</b> Natural Language Toolkit</li>
-        <li><b>transformers:</b> State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow</li>
-        <li><b>PyTorch:</b> Machine learning library for applications such as computer vision and natural language processing</li>
+        <li><b>transformers:</b> State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow.</li>
+        <li><b>PyTorch:</b> Machine learning library for applications such as computer vision and natural language processing.</li>
         <li><b>Django:</b> A high-level Python web framework that encourages rapid development and clean, pragmatic design.</li>
         <li><b>jQuery:</b> JavaScript library</li>
-        <li><b>Pyrebase4:</b> A simple python wrapper for the Firebase API with current deps</li>
+        <li><b>Pyrebase4:</b> A simple python wrapper for the Firebase API with current deps.</li>
+        <li><b>Firebase-Admin:</b> Firebase Admin Python SDK </li>
         <li><b>Flask:</b> A simple framework for building complex web applications.</li>
-        <li><b>Seaborn:</b> Statistical data visualization</li>
+        <li><b>Seaborn:</b> Statistical data visualization.</li>
+        <li><b>PyTesseract:</b> Python-tesseract is a python wrapper for Google's Tesseract OCR.</li>
+        <li><b>Tesseract OCR:</b> A Python wrapper for Tesseract. </li>
+        <li><b>langdetect:</b> Language detection library ported from Google's language-detection. </li>
     </ul>
 </details>
 
@@ -145,7 +164,7 @@ Install dependencies listed in `requirements.txt` into your local Python interpr
 ```bash
   pip install -r requirements.txt
 ```
-- May need to do manually
+- May need to do manually (using `pip install` e.g. `pip install django`)
 
 Activate venv
 
