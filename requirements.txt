@@ -21,3 +21,22 @@ django-bootstrap4>=3.0.0
 
 Flask>=2.2.5
 pyrebase4>=4.5.0
+firebase-admin>=5.2.0
+
+langdetect>=1.0.9
+httpx>=0.23.0
+googletrans>=4.0.0-rc1
+
+# Instructions for downloading and installing Tesseract OCR:
+# 1. Download Tesseract:
+#    - Visit https://github.com/UB-Mannheim/tesseract/wiki to download the installer.
+#
+# 2. Install Tesseract:
+#    - Run the downloaded installer to install Tesseract on your system.
+#
+# 3. Add Tesseract to System PATH:
+#    - Open the Start Menu and search for "Environment Variables".
+#    - Click on "Edit the system environment variables".
+#    - In the System Properties window, click on the "Environment Variables" button.
+#    - In the Environment Variables window, find the "Path" variable in the "System variables" section, and click "Edit".
+#    - Click "New" and add the path to the directory where tesseract.exe is installed. (By default, it might be C:\Program Files\Tesseract-OCR).
